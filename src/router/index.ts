@@ -24,6 +24,11 @@ const router = createRouter({
       name: "registry",
       component: () => import("../views/RegistryView.vue"),
     },
+    {
+      path: "/rsvp",
+      name: "rsvp",
+      component: () => import("../views/RsvpView.vue"),
+    },
   ],
 });
 
