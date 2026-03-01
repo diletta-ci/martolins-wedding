@@ -1,27 +1,21 @@
-# martolins-wedding
+# Martolins Wedding
 
-This template should help get you started developing with Vue 3 in Vite.
+This is the website of the wedding of my friend Marta.
 
-## Recommended IDE Setup
+Currenlty in development and available under the free domain [martolinswedding.netlify.app](https://martolinswedding.netlify.app).
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
-
-## Recommended Browser Setup
-
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
-
-## Type Support for `.vue` Imports in TS
-
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vite.dev/config/).
+## Project stack
+- [Vue 3](https://vuejs.org/) (JavaScript framework)
+- [Pinia](https://pinia.vuejs.org/) (state management)
+- [Vue Router](https://router.vuejs.org/) (routing)
+- [Vite](https://vitejs.dev/) (build tool & development server)
+- [TypeScript](https://www.typescriptlang.org/) (static typing)
+- [Tailwind CSS](https://tailwindcss.com/) (utility-first CSS framework)
+- [ESLint](https://eslint.org/) (linting)
+- [Prettier](https://prettier.io/) (code formatting)
+- [vite-plugin-vue-devtools](https://github.com/webfansplz/vite-plugin-vue-devtools) (Vue dev tools)
+- [@vitejs/plugin-vue-jsx](https://github.com/vitejs/vite-plugin-vue-jsx) (JSX support for Vue)
+- [Netlify](https://www.netlify.com/) (Deployed on production with Netlify)
 
 ## Project Setup
 
