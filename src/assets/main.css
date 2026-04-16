@@ -1,37 +1,27 @@
 @import "tailwindcss";
 
+/* ─── Tailwind theme extension ───────────────────────────────────────────── */
+@theme {
+  /* Colors — mirrors tokens in base.css for Tailwind utility access */
+  --color-brand:       #8599C5;
+  --color-brand-dark:  #6B7FAF;
+  --color-brand-light: #C4D0E8;
+  --color-brand-pale:  #EEF1F8;
+  --color-surface:     #FAFAF8;
+  --color-surface-alt: #F3F1ED;
+  --color-ink:         #1C1B18;
+
+  /* Fonts */
+  --font-display: "Great Vibes", cursive;
+  --font-heading: "Cormorant Garamond", Georgia, serif;
+  --font-body:    "Inter", system-ui, sans-serif;
+}
+
 @import "./base.css";
 
+/* ─── App shell ──────────────────────────────────────────────────────────── */
 #app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  font-weight: normal;
-}
-
-a,
-.green {
-  text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
-  transition: 0.4s;
-  padding: 3px;
-}
-
-@media (hover: hover) {
-  a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
-  }
-}
-
-@media (min-width: 1024px) {
-  body {
-    display: flex;
-    place-items: center;
-  }
-
-  #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
-  }
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
