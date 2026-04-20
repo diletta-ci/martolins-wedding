@@ -44,3 +44,4 @@ coverage/
 .vite/
 .eslintcache
 *.tsbuildinfo
+.claude/worktrees/
