@@ -145,10 +145,24 @@ The `@theme` block in `main.css` exposes all tokens as Tailwind utility classes:
 
 - Work on feature branches, merge to `main` via PR
 - Keep commits small and scoped (one concern per commit)
-- Active branch: `feature/design-system` — design tokens, AppNav, LaceDivider
 
-## Known Issues / Constraints
+## Git & Sandbox Rules — IMPORTANT
 
-- Git commits from the Cowork sandbox leave stale `.git/HEAD.lock` / `.git/index.lock` files on the mounted filesystem. To commit from the sandbox, clone the repo to `/tmp`, commit there, then copy files back. Alternatively commit directly from your own terminal.
+The Cowork sandbox mounts the repo folder via macOS FUSE. Any git process run inside the sandbox leaves stale `.git/index.lock` / `.git/HEAD.lock` files that the sandbox cannot delete, breaking subsequent git commands in the user's terminal.
+
+**Rule: the sandbox must NEVER run git commands on the mounted repo.** This includes `git add`, `git commit`, `git checkout`, `git pull`, `git push`, and any clone-to-/tmp workarounds that push back to the mount.
+
+Instead, when a commit or branch operation is needed, output the exact commands for the user to run in their own terminal:
+
+```bash
+git add src/views/SomeView.vue
+git commit -m "feat: describe the change"
+git push origin feature/branch-name
+```
+
+The sandbox is responsible only for editing files. All git operations are the user's responsibility.
+
+## Known Constraints
+
 - No backend, no database — the site must remain purely frontend.
 - No dark mode — not applicable for a wedding site.
