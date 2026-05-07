@@ -16,5 +16,24 @@
   <body>
     <div id="app"></div>
     <script type="module" src="/src/main.ts"></script>
+
+    <!-- Netlify Forms: static form for bot/crawler detection at build time -->
+    <form name="rsvp" method="POST" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input type="hidden" name="form-name" value="rsvp" />
+      <input name="bot-field" />
+      <input name="party_size" />
+      <input name="guest_names" />
+      <input name="has_children" />
+      <input name="children_count" />
+      <input name="children_ages" />
+      <input name="dietary_none" />
+      <input name="dietary_celiac" />
+      <input name="dietary_allergies" />
+      <input name="dietary_allergies_detail" />
+      <input name="dietary_vegetarian" />
+      <input name="dietary_vegan" />
+      <input name="uses_shuttle" />
+      <input name="shuttle_count" />
+    </form>
   </body>
 </html>
