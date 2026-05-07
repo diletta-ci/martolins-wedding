@@ -1,18 +1,18 @@
 /* ─── Wedding Design Tokens ──────────────────────────────────────────────── */
 :root {
-  /* Brand — periwinkle blue from the invitation */
+  /* Brand — periwinkle blue */
   --wedding-brand:       #8599C5;
-  --wedding-brand-dark:  #6B7FAF;
-  --wedding-brand-light: #C4D0E8;
-  --wedding-brand-pale:  #EEF1F8;
+  --wedding-brand-dark:  #8599C5;
+  --wedding-brand-light: #8599C5;
+  --wedding-brand-pale:  #FFFFFF;
 
   /* Surface & ink */
-  --wedding-surface:     #FAFAF8;
-  --wedding-surface-alt: #F3F1ED;
+  --wedding-surface:     #FFFFFF;
+  --wedding-surface-alt: #FFFFFF;
   --wedding-white:       #FFFFFF;
-  --wedding-ink:         #1C1B18;
-  --wedding-ink-muted:   rgba(28, 27, 24, 0.55);
-  --wedding-ink-faint:   rgba(28, 27, 24, 0.2);
+  --wedding-ink:         #8599C5;
+  --wedding-ink-muted:   rgba(133, 153, 197, 0.65);
+  --wedding-ink-faint:   rgba(133, 153, 197, 0.3);
 
   /* Borders & dividers */
   --wedding-border:      rgba(133, 153, 197, 0.3);

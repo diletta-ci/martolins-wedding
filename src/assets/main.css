@@ -4,12 +4,12 @@
 @theme {
   /* Colors — mirrors tokens in base.css for Tailwind utility access */
   --color-brand:       #8599C5;
-  --color-brand-dark:  #6B7FAF;
-  --color-brand-light: #C4D0E8;
-  --color-brand-pale:  #EEF1F8;
-  --color-surface:     #FAFAF8;
-  --color-surface-alt: #F3F1ED;
-  --color-ink:         #1C1B18;
+  --color-brand-dark:  #8599C5;
+  --color-brand-light: #8599C5;
+  --color-brand-pale:  #FFFFFF;
+  --color-surface:     #FFFFFF;
+  --color-surface-alt: #FFFFFF;
+  --color-ink:         #8599C5;
 
   /* Fonts */
   --font-display: "Great Vibes", cursive;
