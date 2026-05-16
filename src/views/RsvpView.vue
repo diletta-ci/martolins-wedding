@@ -461,7 +461,9 @@ async function handleSubmit() {
 .rsvp-title {
   font-family: var(--font-display);
   font-size: clamp(2.5rem, 8vw, 4rem);
-  font-weight: 400;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
   color: var(--wedding-brand);
   line-height: 1.1;
 }
@@ -503,7 +505,9 @@ async function handleSubmit() {
 .success-heading {
   font-family: var(--font-heading);
   font-size: clamp(1.75rem, 5vw, 2.5rem);
-  font-weight: 400;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
   color: var(--wedding-brand-dark);
 }
 
@@ -517,6 +521,9 @@ async function handleSubmit() {
 .success-signature {
   font-family: var(--font-display);
   font-size: 2.25rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
   color: var(--wedding-brand);
   line-height: 1.1;
   margin-top: 0.5rem;

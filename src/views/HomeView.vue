@@ -122,11 +122,11 @@ import CountdownTimer from "@/components/CountdownTimer.vue";
 .hero-names {
   font-family: var(--font-display);
   font-size: clamp(3.5rem, 14vw, 7rem);
-  font-weight: 400;
+  font-weight: 700;
+  text-transform: uppercase;
   color: var(--wedding-white);
   line-height: 1.05;
-  letter-spacing: 0.01em;
-  /* soft text shadow so it reads on any bg */
+  letter-spacing: 0.1em;
   text-shadow: 0 2px 24px rgba(80, 90, 130, 0.25);
 }
 
@@ -186,10 +186,11 @@ import CountdownTimer from "@/components/CountdownTimer.vue";
 .countdown-sub {
   font-family: var(--font-heading);
   font-size: 0.875rem;
+  font-weight: 700;
   letter-spacing: 0.12em;
+  text-transform: uppercase;
   color: var(--wedding-ink-muted);
   margin-top: 0.25rem;
-  font-style: italic;
 }
 
 /* ── Welcome section ──────────────────────────────────────────────────── */
@@ -209,8 +210,9 @@ import CountdownTimer from "@/components/CountdownTimer.vue";
 .welcome-heading {
   font-family: var(--font-heading);
   font-size: clamp(1.375rem, 3.5vw, 1.875rem);
-  font-weight: 400;
-  font-style: italic;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
   color: var(--wedding-brand-dark);
   margin-bottom: 0.25rem;
 }
@@ -230,6 +232,9 @@ import CountdownTimer from "@/components/CountdownTimer.vue";
 .welcome-signature {
   font-family: var(--font-display);
   font-size: 2.25rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
   color: var(--wedding-brand);
   line-height: 1.1;
   margin-top: 0.5rem;
