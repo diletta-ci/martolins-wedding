@@ -25,7 +25,7 @@ Vue 3 SPA with TypeScript, Tailwind CSS v4, and Vite.
 
 **Views** (`src/views/`): One `.vue` file per route.
 
-**Components** (`src/components/`): Shared components — `AppNav.vue`, `LaceDivider.vue`. Add new ones here.
+**Components** (`src/components/`): Shared components — `AppNav.vue`. Add new ones here.
 
 **State** (`src/stores/`): Pinia stores with Composition API. Currently minimal.
 
@@ -99,8 +99,6 @@ The `@theme` block in `main.css` exposes all tokens as Tailwind utility classes:
 
 **`AppNav.vue`** — Sticky white navigation bar. Great Vibes "M & G" wordmark, Cormorant Garamond small-caps links, periwinkle active state. Mobile hamburger drawer collapses at `sm` breakpoint.
 
-**`LaceDivider.vue`** — SVG scallop divider echoing the invitation's lace border. Props: `flip` (boolean, scallops pointing down) and `color` (CSS color, default `--wedding-brand-pale`). Use between page sections.
-
 ---
 
 ## Page Plan
@@ -148,11 +146,28 @@ La partenza della navetta è prevista alla fine della cerimonia dal parcheggio d
 Ritorno: 
 Il ritorno della navetta è previsto dal luogo del ricevimento a Celle Ligure, Ganci Farm alle ore 23:00 (orario ancora da confermare).
 
-
 ### Schedule (`/schedule`) — `ScheduleView.vue`
 - Vertical visual timeline of the wedding day
 - Rendered via `WeddingTimeline.vue` component (accepts `{ time, title, description }[]` prop)
-- Content: **placeholder** — fill in real times before launch
+- Content is the following:
+
+Programma
+
+1. Cerimonia civile
+Via Mezzalunga, 2, 17015 Celle Ligure
+Ore 11:30
+
+2. Ricevimento
+Ganci Farm
+Via Ganci, 15, 17015 Celle Ligure
+Pranzo ore 13:30
+
+3. Festeggiamenti
+Seguiranno torta e festeggiamenti!
+Si apre la pista! La giornata continua con musica e tanta voglia di ballare e stare insieme.
+
+Anche i bambini si divertiranno, troverete a disposizione un servizio di baby-sitting durante tutta la durata dell’evento.
+
 
 ### Registry (`/registry`) — `RegistryView.vue`
 - Warm introductory note in Italian

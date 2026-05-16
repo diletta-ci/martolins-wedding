@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { ref, computed, watch } from 'vue'
 import { RouterLink } from 'vue-router'
-import LaceDivider from '@/components/LaceDivider.vue'
 
 // ── Guest list ───────────────────────────────────────────────────────────────
 interface Guest {
@@ -142,8 +141,6 @@ async function handleSubmit() {
       </p>
     </div>
   </section>
-
-  <LaceDivider color="var(--wedding-surface)" />
 
   <!-- ─── Success state ────────────────────────────────────────────────── -->
   <section v-if="submitted" class="rsvp-success">
@@ -428,8 +425,6 @@ async function handleSubmit() {
       </div>
     </form>
   </section>
-
-  <LaceDivider color="var(--wedding-surface-alt)" />
 </template>
 
 <style scoped>

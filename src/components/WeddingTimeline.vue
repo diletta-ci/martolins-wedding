@@ -1,6 +1,6 @@
 <script setup lang="ts">
 export interface TimelineEvent {
-  time: string;
+  time?: string;
   title: string;
   description: string;
   icon?: "rings" | "camera" | "fork" | "cocktail" | "music";
@@ -54,7 +54,7 @@ defineProps<{
 
       <!-- Content -->
       <div class="timeline-content">
-        <time class="timeline-time">{{ event.time }}</time>
+        <time v-if="event.time" class="timeline-time">{{ event.time }}</time>
         <h3 class="timeline-title">{{ event.title }}</h3>
         <p class="timeline-description">{{ event.description }}</p>
       </div>
