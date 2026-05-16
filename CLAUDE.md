@@ -117,10 +117,37 @@ All the images can be found in the folder “src/assets/images”
 
 
 ### Location (`/location`) — `LocationView.vue`
-- Venue: **Ganci Farm**, Via Ganci 15, Celle Ligure SV
-- Full-width embedded Google Maps iframe (link above)
-- "Ottieni indicazioni" button → opens Google Maps
-- Prose section with travel tips (placeholder)
+Location
+
+The location page is composed by
+1. Section with two columns for the locations
+- The Ceremony (“Cerimonia civile”) location 
+- The Lunch and party (“Ricevimento”).
+2. Section with Bus Services (“Servizio navetta”) with the relatively info.
+3. Prose section with travel tips from Torino and Genova
+
+The locations need both the google maps link to obtain indication and maps preview.
+Use the follow information to complete the information of the page:
+
+Cerimonia civile
+Via Mezzalunga, 2, 17015 Celle Ligure
+Ore 11:30
+
+Ricevimento
+Ganci Farm
+Via Ganci, 15, 17015 Celle Ligure
+Pranzo ore 13:30
+È disponibile il parcheggio della location.
+
+Servizio navetta:
+Dal luogo della cerimonia al ricevimento sarà disponibile un servizio navetta per chi non ha un mezzo proprio o nel caso si volesse lasciare la propria auto nel luogo della cerimonia (Celle Ligure).
+
+Andata:
+La partenza della navetta è prevista alla fine della cerimonia dal parcheggio davanti ai giardini Mezzalunga di Celle Ligure (google maps).
+
+Ritorno: 
+Il ritorno della navetta è previsto dal luogo del ricevimento a Celle Ligure, Ganci Farm alle ore 23:00 (orario ancora da confermare).
+
 
 ### Schedule (`/schedule`) — `ScheduleView.vue`
 - Vertical visual timeline of the wedding day
@@ -151,21 +178,18 @@ All the images can be found in the folder “src/assets/images”
 - Work on feature branches, merge to `main` via PR
 - Keep commits small and scoped (one concern per commit)
 
-## Git & Sandbox Rules — IMPORTANT
+## Git & PR Workflow
 
-The Cowork sandbox mounts the repo folder via macOS FUSE. Any git process run inside the sandbox leaves stale `.git/index.lock` / `.git/HEAD.lock` files that the sandbox cannot delete, breaking subsequent git commands in the user's terminal.
+Claude is allowed to run git and `gh` commands directly to commit, push, and open pull requests on this repo. When the user asks to ship a change or invokes `/create-pr`:
 
-**Rule: the sandbox must NEVER run git commands on the mounted repo.** This includes `git add`, `git commit`, `git checkout`, `git pull`, `git push`, and any clone-to-/tmp workarounds that push back to the mount.
+1. Create or switch to a feature branch (never commit straight to `main`).
+2. Stage only the files relevant to the change — avoid `git add -A` / `git add .`.
+3. Commit with a small, scoped message (one concern per commit).
+4. Push the branch to `origin` with `-u` on the first push.
+5. Open the PR with `gh pr create`, using a clear title and a body that covers what changed and why. Pass the body via a HEREDOC to preserve formatting.
+6. Report the PR URL back to the user.
 
-Instead, when a commit or branch operation is needed, output the exact commands for the user to run in their own terminal:
-
-```bash
-git add src/views/SomeView.vue
-git commit -m "feat: describe the change"
-git push origin feature/branch-name
-```
-
-The sandbox is responsible only for editing files. All git operations are the user's responsibility.
+Never force-push to `main`, never amend already-pushed commits, and never bypass hooks (`--no-verify`) unless the user explicitly asks for it.
 
 ## Known Constraints
 
