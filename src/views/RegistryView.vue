@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import LaceDivider from "@/components/LaceDivider.vue";
-
 // Replace these placeholders with real URLs before launch
 const PAYPAL_URL = "#paypal-placeholder";
 const AMAZON_URL = "#amazon-placeholder";
@@ -20,10 +18,6 @@ const BANK_CAUSALE = "Regalo matrimonio Marta & Giacomo";
       <h1 class="page-title">Lista Nozze</h1>
       <p class="page-subtitle">29 · 8 · 2026 — Celle Ligure</p>
     </div>
-
-    <div class="page-header-scallop" aria-hidden="true">
-      <LaceDivider :flip="true" color="var(--wedding-surface)" />
-    </div>
   </section>
 
   <!-- ─── Intro ────────────────────────────────────────────────────────── -->
@@ -36,9 +30,6 @@ const BANK_CAUSALE = "Regalo matrimonio Marta & Giacomo";
       </p>
     </div>
   </section>
-
-  <!-- ─── Divider ───────────────────────────────────────────────────────── -->
-  <LaceDivider color="var(--wedding-surface-alt)" />
 
   <!-- ─── Gift cards ───────────────────────────────────────────────────── -->
   <section class="gifts-section" aria-label="Modi per fare un regalo">
@@ -186,9 +177,7 @@ const BANK_CAUSALE = "Regalo matrimonio Marta & Giacomo";
     </div>
   </section>
 
-  <!-- ─── Closing divider + note ───────────────────────────────────────── -->
-  <LaceDivider color="var(--wedding-surface)" />
-
+  <!-- ─── Closing note ─────────────────────────────────────────────────── -->
   <section class="closing-section" aria-label="Nota conclusiva">
     <p class="closing-text">
       Grazie di cuore per ogni pensiero e per essere qui con noi. ♡
@@ -248,14 +237,6 @@ const BANK_CAUSALE = "Regalo matrimonio Marta & Giacomo";
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.75);
   margin-top: 0.25rem;
-}
-
-.page-header-scallop {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  line-height: 0;
 }
 
 /* ── Intro ──────────────────────────────────────────────────────────────── */
