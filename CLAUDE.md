@@ -106,10 +106,15 @@ The `@theme` block in `main.css` exposes all tokens as Tailwind utility classes:
 ## Page Plan
 
 ### Home (`/`) — `HomeView.vue`
-- Full-viewport hero: the invitation illustration centered on brand blue background
-- "Marta e Giacomo" in Great Vibes, "29 · 8 · 2026 — Celle Ligure" in Cormorant small-caps
-- Countdown timer component (`CountdownTimer.vue`) — days/hours/minutes to 29 Aug 2026
-- Short welcoming paragraph in Italian below the fold
+The homepage needs to be a full-viewport hero on brand blue background with the following elements all centered:
+1. Center image of the calligraphy names (names-calligraphy.png)
+2. the illustration of the couple (illustration-martaegiacomo.png) centered 
+3. Central text: “Ci sposiamo!”
+4. the date using the calligraphy image (date-calligraphy.png)
+
+All the elements are place centered in the specified order. 
+All the images can be found in the folder “src/assets/images”
+
 
 ### Location (`/location`) — `LocationView.vue`
 - Venue: **Ganci Farm**, Via Ganci 15, Celle Ligure SV
