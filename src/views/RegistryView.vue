@@ -233,7 +233,9 @@ const BANK_CAUSALE = "Regalo matrimonio Marta & Giacomo";
 .page-title {
   font-family: var(--font-display);
   font-size: clamp(2.75rem, 10vw, 5rem);
-  font-weight: 400;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
   color: var(--wedding-white);
   line-height: 1.05;
   text-shadow: 0 2px 20px rgba(70, 80, 120, 0.2);
@@ -271,8 +273,9 @@ const BANK_CAUSALE = "Regalo matrimonio Marta & Giacomo";
 .intro-text {
   font-family: var(--font-heading);
   font-size: clamp(1.0625rem, 2.5vw, 1.25rem);
-  font-weight: 400;
-  font-style: italic;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
   line-height: 1.8;
   color: var(--wedding-ink-muted);
 }
@@ -291,8 +294,9 @@ const BANK_CAUSALE = "Regalo matrimonio Marta & Giacomo";
 .gifts-heading {
   font-family: var(--font-heading);
   font-size: clamp(1.375rem, 3.5vw, 1.875rem);
-  font-weight: 400;
-  font-style: italic;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
   color: var(--wedding-brand-dark);
   margin-bottom: 2.5rem;
   text-align: center;
@@ -460,6 +464,9 @@ const BANK_CAUSALE = "Regalo matrimonio Marta & Giacomo";
 .closing-text {
   font-family: var(--font-display);
   font-size: clamp(1.5rem, 4vw, 2.125rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
   color: var(--wedding-brand);
   line-height: 1.4;
 }

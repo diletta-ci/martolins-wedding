@@ -83,9 +83,9 @@ Derived from the printed invitation: a periwinkle/cornflower blue background, fl
 
 | Variable | Font | Usage |
 |---|---|---|
-| `--font-display` | Great Vibes (Google Fonts) | Couple's names, hero titles — calligraphic script |
-| `--font-heading` | Cormorant Garamond (Google Fonts) | Section headings, nav links — elegant serif |
-| `--font-body` | Inter | Body copy, form labels, captions |
+| `--font-display` | Raleway (Google Fonts) | Couple's names, hero titles | bold and uppercase
+| `--font-heading` | Raleway (Google Fonts) | Section headings, nav links | bold and uppercase
+| `--font-body` | Roboto (Google Fonts) | Body copy, form labels, captions |
 
 Loaded in `index.html` via Google Fonts. Weights: Great Vibes 400; Cormorant Garamond 300/400/500/600 + italic; Inter 300/400/500.
 

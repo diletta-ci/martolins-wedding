@@ -12,9 +12,9 @@
   --color-ink:         #1C1B18;
 
   /* Fonts */
-  --font-display: "Great Vibes", cursive;
-  --font-heading: "Cormorant Garamond", Georgia, serif;
-  --font-body:    "Inter", system-ui, sans-serif;
+  --font-display: "Raleway", sans-serif;
+  --font-heading: "Raleway", sans-serif;
+  --font-body:    "Roboto", system-ui, sans-serif;
 }
 
 @import "./base.css";

@@ -19,9 +19,9 @@
   --wedding-border-soft: rgba(133, 153, 197, 0.15);
 
   /* Typography */
-  --font-display: "Great Vibes", cursive;
-  --font-heading: "Cormorant Garamond", Georgia, serif;
-  --font-body:    "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-display: "Raleway", sans-serif;
+  --font-heading: "Raleway", sans-serif;
+  --font-body:    "Roboto", system-ui, sans-serif;
 
   /* Spacing rhythm */
   --section-gap:  6rem;
@@ -59,8 +59,10 @@ body {
 /* ─── Typography defaults ────────────────────────────────────────────────── */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
-  font-weight: 400;
+  font-weight: 700;
   line-height: 1.2;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
   color: var(--wedding-ink);
 }
 

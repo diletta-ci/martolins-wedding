@@ -118,7 +118,9 @@ const events: TimelineEvent[] = [
 .page-title {
   font-family: var(--font-display);
   font-size: clamp(2.75rem, 10vw, 5rem);
-  font-weight: 400;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
   color: var(--wedding-white);
   line-height: 1.05;
   text-shadow: 0 2px 20px rgba(70, 80, 120, 0.2);
@@ -156,7 +158,6 @@ const events: TimelineEvent[] = [
 .note-text {
   font-family: var(--font-heading);
   font-size: clamp(0.9375rem, 2vw, 1.0625rem);
-  font-style: italic;
   color: var(--wedding-ink-muted);
   line-height: 1.7;
 }

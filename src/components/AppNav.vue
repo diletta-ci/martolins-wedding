@@ -96,9 +96,11 @@ function closeMenu() {
 .nav-wordmark {
   font-family: var(--font-display);
   font-size: 1.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
   color: var(--wedding-brand);
   line-height: 1;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.08em;
   transition: color 0.2s;
 }
 
