@@ -669,7 +669,7 @@ async function handleSubmit() {
 .field-textarea:focus,
 .field-select:focus {
   border-color: var(--wedding-brand);
-  box-shadow: 0 0 0 3px rgba(133, 153, 197, 0.2);
+  box-shadow: 0 0 0 3px rgba(141, 166, 212, 0.2);
 }
 
 /* ── Age input ───────────────────────────────────────────────────────────── */
@@ -1017,7 +1017,7 @@ async function handleSubmit() {
   padding: 0.875rem 2.5rem;
   cursor: pointer;
   transition: background-color 0.15s ease, transform 0.1s ease, box-shadow 0.15s ease;
-  box-shadow: 0 2px 12px rgba(133, 153, 197, 0.35);
+  box-shadow: 0 2px 12px rgba(141, 166, 212, 0.35);
 }
 
 .btn-submit:hover:not(:disabled) {
@@ -1028,7 +1028,7 @@ async function handleSubmit() {
 
 .btn-submit:active:not(:disabled) {
   transform: translateY(0);
-  box-shadow: 0 2px 8px rgba(133, 153, 197, 0.3);
+  box-shadow: 0 2px 8px rgba(141, 166, 212, 0.3);
 }
 
 .btn-submit:disabled {

@@ -3,7 +3,7 @@
 /* ─── Tailwind theme extension ───────────────────────────────────────────── */
 @theme {
   /* Colors — mirrors tokens in base.css for Tailwind utility access */
-  --color-brand:       #8599C5;
+  --color-brand:       #8DA6D4;
   --color-brand-dark:  #6B7FAF;
   --color-brand-light: #C4D0E8;
   --color-brand-pale:  #EEF1F8;
