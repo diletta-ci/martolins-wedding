@@ -21,7 +21,7 @@ npm run format       # Prettier formatting
 
 Vue 3 SPA with TypeScript, Tailwind CSS v4, and Vite.
 
-**Routing** (`src/router/index.ts`): Five routes — `/`, `/location`, `/schedule`, `/registry`, `/rsvp`. Non-home routes use dynamic imports for code splitting.
+**Routing** (`src/router/index.ts`): Six routes — `/`, `/location`, `/schedule`, `/registry`, `/rsvp`, `/album`. Non-home routes use dynamic imports for code splitting.
 
 **Views** (`src/views/`): One `.vue` file per route.
 
@@ -190,6 +190,20 @@ In caso voleste contribuire al nostro viaggio di nozze, ecco qualche modo per fa
   - Messaggio per Marta e Giacomo (textarea, optional)
 - On success: inline confirmation message, no page redirect
 - Netlify Forms setup: static hidden form in `index.html` + `fetch()` POST in the Vue component
+
+
+### Album (`/album`) — `AlbumView.vue`
+Photo and video sharing page for wedding guests via **WedShoots** (wedshoots.com/it — free service).
+
+Structure:
+- Brand blue page header (eyebrow "I vostri ricordi", title "Foto & Video")
+- Warm intro paragraph inviting guests to share their shots
+- CTA card (centred, white card with camera icon) containing:
+  - Title + description mentioning WedShoots by name
+  - "Apri l'album" button — `href="#wedshoots-placeholder"` ⚠️ **must be replaced with the real WedShoots album link before the wedding**
+  - Italic note that the link goes live on 29 agosto
+
+**Before launch:** create the album at https://www.wedshoots.com/it, then replace `#wedshoots-placeholder` in `AlbumView.vue` with the real shareable link or album code.
 
 ---
 
