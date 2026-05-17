@@ -4,9 +4,9 @@
   <!-- ─── Page header ──────────────────────────────────────────────────── -->
   <section class="page-header" aria-label="Location del matrimonio">
     <div class="page-header-inner">
-      <p class="page-eyebrow">29 Agosto 2026</p>
+      <p class="page-eyebrow">Dove ci sposiamo</p>
       <h1 class="page-title">Location</h1>
-      <p class="page-subtitle">Celle Ligure SV</p>
+      <p class="page-subtitle">29 · 8 · 2026</p>
     </div>
   </section>
 

@@ -14,7 +14,7 @@ const BANK_CAUSALE = "Regalo matrimonio Marta & Giacomo";
     <div class="page-header-inner">
       <p class="page-eyebrow">Il vostro pensiero</p>
       <h1 class="page-title">Regalo</h1>
-      <p class="page-subtitle">29 · 8 · 2026 — Celle Ligure</p>
+      <p class="page-subtitle">29 · 8 · 2026</p>
     </div>
   </section>
 

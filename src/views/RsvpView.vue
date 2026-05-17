@@ -132,13 +132,11 @@ async function handleSubmit() {
 
 <template>
   <!-- ─── Page header ──────────────────────────────────────────────────── -->
-  <section class="rsvp-hero">
-    <div class="rsvp-hero-content">
-      <p class="rsvp-eyebrow">Conferma la tua presenza</p>
-      <h1 class="rsvp-title">RSVP</h1>
-      <p class="rsvp-subtitle">
-        Facci sapere se ci sarai entro il <strong>31 luglio 2026</strong>.
-      </p>
+  <section class="page-header" aria-label="Conferma di presenza">
+    <div class="page-header-inner">
+      <p class="page-eyebrow">Conferma la tua presenza</p>
+      <h1 class="page-title">RSVP</h1>
+      <p class="page-subtitle">29 · 8 · 2026</p>
     </div>
   </section>
 
@@ -157,6 +155,9 @@ async function handleSubmit() {
 
   <!-- ─── Form ─────────────────────────────────────────────────────────── -->
   <section v-else class="rsvp-form-section">
+    <p class="rsvp-deadline">
+      Facci sapere se ci sarai entro il <strong>31 luglio 2026</strong>.
+    </p>
     <form
       class="rsvp-form"
       name="rsvp"
@@ -429,48 +430,69 @@ async function handleSubmit() {
 
 <style scoped>
 /* ── Page header ─────────────────────────────────────────────────────────── */
-.rsvp-hero {
-  background-color: var(--wedding-brand-pale);
-  padding: 4rem 1.5rem 1rem;
+.page-header {
+  position: relative;
+  background-color: var(--wedding-brand);
+  background-image: radial-gradient(
+    ellipse 70% 80% at 50% 40%,
+    rgba(255, 255, 255, 0.09) 0%,
+    transparent 70%
+  );
+  padding: 5rem 1.5rem 4rem;
   text-align: center;
+  overflow: hidden;
 }
 
-.rsvp-hero-content {
-  max-width: var(--content-max);
-  margin: 0 auto;
+.page-header-inner {
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.5rem;
+  padding-bottom: 2rem;
 }
 
-.rsvp-eyebrow {
+.page-eyebrow {
   font-family: var(--font-heading);
   font-size: 0.8125rem;
   font-weight: 500;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.26em;
   text-transform: uppercase;
-  color: var(--wedding-ink-muted);
+  color: rgba(255, 255, 255, 0.7);
 }
 
-.rsvp-title {
+.page-title {
   font-family: var(--font-display);
-  font-size: clamp(2.5rem, 8vw, 4rem);
+  font-size: clamp(2.75rem, 10vw, 5rem);
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: var(--wedding-brand);
-  line-height: 1.1;
+  color: var(--wedding-white);
+  line-height: 1.05;
+  text-shadow: 0 2px 20px rgba(70, 80, 120, 0.2);
 }
 
-.rsvp-subtitle {
+.page-subtitle {
+  font-family: var(--font-heading);
+  font-size: clamp(0.75rem, 2.2vw, 0.9375rem);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.75);
+  margin-top: 0.25rem;
+}
+
+/* ── Deadline note ───────────────────────────────────────────────────────── */
+.rsvp-deadline {
   font-family: var(--font-body);
   font-size: 1rem;
   color: var(--wedding-ink-muted);
+  text-align: center;
   max-width: 38ch;
+  margin: 0 auto 2rem;
 }
 
-.rsvp-subtitle strong {
+.rsvp-deadline strong {
   color: var(--wedding-ink);
   font-weight: 500;
 }
