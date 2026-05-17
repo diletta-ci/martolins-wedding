@@ -4,7 +4,7 @@
     <div class="page-header-inner">
       <p class="page-eyebrow">I vostri ricordi</p>
       <h1 class="page-title">Foto &amp; Video</h1>
-      <p class="page-subtitle">29 · 8 · 2026 — Celle Ligure</p>
+      <p class="page-subtitle">29 · 8 · 2026</p>
     </div>
   </section>
 
