@@ -76,7 +76,7 @@
   </section>
 
   <!-- ─── Servizio navetta ─────────────────────────────────────────────── -->
-  <section class="shuttle-section" aria-label="Servizio navetta">
+  <section id="shuttle" class="shuttle-section" aria-label="Servizio navetta">
     <div class="shuttle-inner">
       <h2 class="section-heading">Servizio navetta</h2>
       <p class="shuttle-intro">
@@ -331,6 +331,7 @@
 .shuttle-section {
   background-color: var(--wedding-surface-alt);
   padding: 4.5rem 1.5rem;
+  scroll-margin-top: 5rem;
 }
 
 .shuttle-inner {

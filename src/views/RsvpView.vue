@@ -378,7 +378,7 @@ async function handleSubmit() {
           <p class="field-label" id="shuttle-label">Userete la navetta?</p>
           <p class="field-hint field-hint--standalone">
             Mettiamo a disposizione un servizio navetta dall'hotel fino a Ganci Farm —
-            <RouterLink to="/location" class="hint-link">scopri di più sulla location</RouterLink>.
+            <RouterLink :to="{ path: '/location', hash: '#shuttle' }" class="hint-link">scopri di più sulla location</RouterLink>.
           </p>
           <div class="radio-group" role="radiogroup" aria-labelledby="shuttle-label">
             <label class="radio-option">
