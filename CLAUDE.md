@@ -256,7 +256,15 @@ Never force-push to `main`, never amend already-pushed commits, and never bypass
 ## Planning documents
 
 All planning and audit documents live in `planning/`, numbered sequentially
-(e.g. `planning/0001-initial-audit.md`, `planning/0002-…`). When generating a
-new or updated planning doc, **never overwrite an existing file** — always
-create the next-numbered file so the history of recommendations is preserved.
-The latest plan is the highest-numbered file in the folder.
+(e.g. `planning/0001-initial-audit.md`, `planning/0002-…`).
+
+**Two rules:**
+1. **Never overwrite an existing file** — always create the next-numbered file
+   so the history of recommendations is preserved. The latest plan is the
+   highest-numbered file in the folder.
+2. **Each new file is a complete snapshot, not a delta.** Carry forward all
+   relevant context from the previous version and update it with new
+   decisions, dropped items, or refined recommendations. A short
+   "Changes since 0NNN" section at the top is encouraged, but the rest of the
+   file should read standalone — a reader should never need to open the
+   previous version to understand the current plan.
