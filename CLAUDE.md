@@ -101,6 +101,29 @@ The `@theme` block in `main.css` exposes all tokens as Tailwind utility classes:
 
 **`AppNav.vue`** — Sticky white navigation bar. Great Vibes "M & G" wordmark, Cormorant Garamond small-caps links, periwinkle active state. Mobile hamburger drawer collapses at `sm` breakpoint.
 
+### Page Header Pattern
+
+Every view **except the home page** opens with the same hero block: white text on the periwinkle brand background, three centred lines. `LocationView.vue` is the canonical reference — copy its markup and `<style scoped>` block verbatim when building a new view.
+
+**Markup:**
+
+```html
+<section class="page-header" aria-label="...">
+  <div class="page-header-inner">
+    <p class="page-eyebrow">{{ pertinent phrase }}</p>
+    <h1 class="page-title">{{ view title }}</h1>
+    <p class="page-subtitle">29 · 8 · 2026</p>
+  </div>
+</section>
+```
+
+**Rules:**
+- **Eyebrow** — a short pertinent phrase that frames the view (e.g. "Dove ci sposiamo", "La nostra giornata", "I vostri ricordi"). Never the date or a venue label.
+- **Title** — the view's name in one or two words ("Location", "Programma", "Regalo", "RSVP", "Foto & Video").
+- **Subtitle** — always the wedding date in the canonical format `29 · 8 · 2026`. No venue, no city, no extra suffix.
+
+The CSS for `.page-header`, `.page-header-inner`, `.page-eyebrow`, `.page-title`, `.page-subtitle` is currently duplicated across views. If a third style adjustment is needed, lift it into a shared `PageHeader.vue` component rather than editing each file.
+
 ---
 
 ## Page Plan
