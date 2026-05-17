@@ -25,7 +25,7 @@ Vue 3 SPA with TypeScript, Tailwind CSS v4, and Vite.
 
 **Views** (`src/views/`): One `.vue` file per route.
 
-**Components** (`src/components/`): Shared components — `AppNav.vue`, `LaceDivider.vue`. Add new ones here.
+**Components** (`src/components/`): Shared components — `AppNav.vue`. Add new ones here.
 
 **State** (`src/stores/`): Pinia stores with Composition API. Currently minimal.
 
@@ -81,11 +81,13 @@ Derived from the printed invitation: a periwinkle/cornflower blue background, fl
 
 ### Typography
 
-| Variable | Font | Usage |
-|---|---|---|
-| `--font-display` | Raleway (Google Fonts) | Couple's names, hero titles | bold and uppercase
-| `--font-heading` | Raleway (Google Fonts) | Section headings, nav links | bold and uppercase
-| `--font-body` | Roboto (Google Fonts) | Body copy, form labels, captions |
+| Variable | Font | Usage | Style |
+|---|---|---|---|
+| `--font-display` | Raleway (Google Fonts) | Couple's names, hero titles | bold, uppercase |
+| `--font-heading` | Raleway (Google Fonts) | Section headings, nav links, small labels (eyebrows, buttons, IBAN labels, etc.) | bold, uppercase |
+| `--font-body` | Roboto (Google Fonts) | Body copy, paragraphs, form fields | regular, **sentence case — never uppercase** |
+
+Body text (paragraphs, intro copy, descriptions, notes) is always set in `--font-body` with no `text-transform: uppercase`. Uppercase is reserved for headings, eyebrows, nav links, buttons, and small labels.
 
 Loaded in `index.html` via Google Fonts. Weights: Great Vibes 400; Cormorant Garamond 300/400/500/600 + italic; Inter 300/400/500.
 
@@ -98,8 +100,6 @@ The `@theme` block in `main.css` exposes all tokens as Tailwind utility classes:
 ### Shared Components
 
 **`AppNav.vue`** — Sticky white navigation bar. Great Vibes "M & G" wordmark, Cormorant Garamond small-caps links, periwinkle active state. Mobile hamburger drawer collapses at `sm` breakpoint.
-
-**`LaceDivider.vue`** — SVG scallop divider echoing the invitation's lace border. Props: `flip` (boolean, scallops pointing down) and `color` (CSS color, default `--wedding-brand-pale`). Use between page sections.
 
 ---
 
@@ -155,9 +155,12 @@ Il ritorno della navetta è previsto dal luogo del ricevimento a Celle Ligure, G
 - Content: **placeholder** — fill in real times before launch
 
 ### Registry (`/registry`) — `RegistryView.vue`
-- Warm introductory note in Italian
-- Gift cards: PayPal link + external wishlist links
-- Content: **placeholder** — fill in PayPal URL and wishlist links before launch
+- Warm introductory note (#note)
+- Gift cards options: PayPal link and IBAN information
+
+#note = "La vostra presenza è il regalo più grande che potessimo desiderare.
+In caso voleste contribuire al nostro viaggio di nozze, ecco qualche modo per farlo — con tutto il nostro affetto e gratitudine."
+
 
 ### RSVP (`/rsvp`) — `RsvpView.vue`
 - **Submitted via Netlify Forms** (no backend needed)

@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import LaceDivider from "@/components/LaceDivider.vue";
 import WeddingTimeline from "@/components/WeddingTimeline.vue";
 import type { TimelineEvent } from "@/components/WeddingTimeline.vue";
 
@@ -50,15 +49,9 @@ const events: TimelineEvent[] = [
       <h1 class="page-title">Programma</h1>
       <p class="page-subtitle">29 Agosto 2026 · Ganci Farm</p>
     </div>
-
-    <div class="page-header-scallop" aria-hidden="true">
-      <LaceDivider :flip="true" color="var(--wedding-surface)" />
-    </div>
   </section>
 
   <!-- ─── Note ─────────────────────────────────────────────────────────── -->
-  <LaceDivider color="var(--wedding-surface-alt)" />
-
   <section class="note-section">
     <div class="note-inner">
       <p class="note-text">
@@ -68,17 +61,12 @@ const events: TimelineEvent[] = [
     </div>
   </section>
 
-  <LaceDivider color="var(--wedding-surface)" />
-
   <!-- ─── Timeline ──────────────────────────────────────────────────────── -->
   <section class="timeline-section">
     <div class="timeline-inner">
       <WeddingTimeline :events="events" />
     </div>
   </section>
-
-  <!-- ─── Closing scallop ───────────────────────────────────────────────── -->
-  <LaceDivider color="var(--wedding-surface-alt)" />
 </template>
 
 <style scoped>
@@ -133,14 +121,6 @@ const events: TimelineEvent[] = [
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.75);
   margin-top: 0.25rem;
-}
-
-.page-header-scallop {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  line-height: 0;
 }
 
 /* ── Note section ────────────────────────────────────────────────────────── */
