@@ -31,7 +31,7 @@ const events: TimelineEvent[] = [
     <div class="page-header-inner">
       <p class="page-eyebrow">La nostra giornata</p>
       <h1 class="page-title">Programma</h1>
-      <p class="page-subtitle">29 Agosto 2026 · Ganci Farm</p>
+      <p class="page-subtitle">29 · 8 · 2026</p>
     </div>
   </section>
 
