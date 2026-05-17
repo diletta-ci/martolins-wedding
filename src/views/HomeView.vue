@@ -44,7 +44,7 @@ import dateUrl from "@/assets/images/date-calligraphy.png";
       </p>
       <p class="welcome-body">
         In queste pagine troverete tutte le informazioni di cui avete bisogno:
-        come raggiungerci, il programma della giornata, la nostra lista nozze
+        come raggiungerci, il programma della giornata, il regalo
         e, naturalmente, il modulo per confermare la vostra partecipazione.
       </p>
       <p class="welcome-body welcome-body--signed">

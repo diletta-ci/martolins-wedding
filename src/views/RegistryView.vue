@@ -1,8 +1,6 @@
 <script setup lang="ts">
-// Replace these placeholders with real URLs before launch
+// Replace this placeholder with the real URL before launch
 const PAYPAL_URL = "#paypal-placeholder";
-const AMAZON_URL = "#amazon-placeholder";
-const WISHLIST_URL = "#wishlist-placeholder";
 
 // Replace with real IBAN details before launch
 const IBAN = "IT00 A000 0000 0000 0000 0000 000";
@@ -12,10 +10,10 @@ const BANK_CAUSALE = "Regalo matrimonio Marta & Giacomo";
 
 <template>
   <!-- ─── Page header ──────────────────────────────────────────────────── -->
-  <section class="page-header" aria-label="Lista nozze">
+  <section class="page-header" aria-label="Regalo">
     <div class="page-header-inner">
       <p class="page-eyebrow">Il vostro pensiero</p>
-      <h1 class="page-title">Lista Nozze</h1>
+      <h1 class="page-title">Regalo</h1>
       <p class="page-subtitle">29 · 8 · 2026 — Celle Ligure</p>
     </div>
   </section>
@@ -25,8 +23,8 @@ const BANK_CAUSALE = "Regalo matrimonio Marta & Giacomo";
     <div class="intro-inner">
       <p class="intro-text">
         La vostra presenza è il regalo più grande che potessimo desiderare.
-        Se però volete lasciarci un pensiero, ecco qualche modo per farlo —
-        con tutto il nostro affetto e gratitudine.
+        In caso voleste contribuire al nostro viaggio di nozze, ecco qualche
+        modo per farlo — con tutto il nostro affetto e gratitudine.
       </p>
     </div>
   </section>
@@ -101,87 +99,8 @@ const BANK_CAUSALE = "Regalo matrimonio Marta & Giacomo";
           </div>
         </div>
 
-        <!-- Amazon wishlist -->
-        <div class="gift-card">
-          <div class="gift-card-icon" aria-hidden="true">
-            <!-- Shopping bag / list icon -->
-            <svg viewBox="0 0 24 24" fill="none">
-              <path
-                d="M19 6h-2c0-2.76-2.24-5-5-5S7 3.24 7 6H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-7-3c1.66 0 3 1.34 3 3H9c0-1.66 1.34-3 3-3zm0 10c-1.66 0-3-1.34-3-3h2c0 .55.45 1 1 1s1-.45 1-1h2c0 1.66-1.34 3-3 3z"
-                fill="currentColor"
-              />
-            </svg>
-          </div>
-          <div class="gift-card-body">
-            <h3 class="gift-card-title">Lista Amazon</h3>
-            <p class="gift-card-desc">
-              Abbiamo selezionato alcuni oggetti per la nostra nuova casa.
-              Trovate tutto sulla nostra lista Amazon — dal grande al piccolo.
-            </p>
-          </div>
-          <a
-            :href="AMAZON_URL"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="gift-btn gift-btn--outline"
-            aria-label="Vai alla lista Amazon"
-          >
-            Vai alla lista
-            <svg class="gift-btn-icon" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-              <path
-                fill-rule="evenodd"
-                d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z"
-                clip-rule="evenodd"
-              />
-            </svg>
-          </a>
-        </div>
-
-        <!-- Other wishlist -->
-        <div class="gift-card">
-          <div class="gift-card-icon" aria-hidden="true">
-            <!-- Heart / gift icon -->
-            <svg viewBox="0 0 24 24" fill="none">
-              <path
-                d="M20 7h-1.26A4.5 4.5 0 0 0 13 3.5a4.5 4.5 0 0 0-9 1A4 4 0 0 0 4 12h1v8a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-8h1a4 4 0 0 0 0-8zM11 19H6v-7h5v7zm7 0h-5v-7h5v7zM9.5 10a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"
-                fill="currentColor"
-              />
-            </svg>
-          </div>
-          <div class="gift-card-body">
-            <h3 class="gift-card-title">Lista Regali</h3>
-            <p class="gift-card-desc">
-              Hai in mente qualcosa di speciale? Consulta la nostra lista
-              desideri per idee e ispirazioni per tutti i gusti e budget.
-            </p>
-          </div>
-          <a
-            :href="WISHLIST_URL"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="gift-btn gift-btn--outline"
-            aria-label="Vai alla lista regali"
-          >
-            Vai alla lista
-            <svg class="gift-btn-icon" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-              <path
-                fill-rule="evenodd"
-                d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z"
-                clip-rule="evenodd"
-              />
-            </svg>
-          </a>
-        </div>
-
       </div>
     </div>
-  </section>
-
-  <!-- ─── Closing note ─────────────────────────────────────────────────── -->
-  <section class="closing-section" aria-label="Nota conclusiva">
-    <p class="closing-text">
-      Grazie di cuore per ogni pensiero e per essere qui con noi. ♡
-    </p>
   </section>
 </template>
 
@@ -252,11 +171,8 @@ const BANK_CAUSALE = "Regalo matrimonio Marta & Giacomo";
 }
 
 .intro-text {
-  font-family: var(--font-heading);
+  font-family: var(--font-body);
   font-size: clamp(1.0625rem, 2.5vw, 1.25rem);
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
   line-height: 1.8;
   color: var(--wedding-ink-muted);
 }
@@ -418,37 +334,4 @@ const BANK_CAUSALE = "Regalo matrimonio Marta & Giacomo";
   background-color: var(--wedding-brand-dark);
 }
 
-.gift-btn--outline {
-  background-color: transparent;
-  color: var(--wedding-brand);
-  border: 1.5px solid var(--wedding-brand-light);
-}
-
-.gift-btn--outline:hover {
-  background-color: var(--wedding-brand-pale);
-  border-color: var(--wedding-brand);
-}
-
-.gift-btn-icon {
-  width: 1rem;
-  height: 1rem;
-  flex-shrink: 0;
-}
-
-/* ── Closing note ───────────────────────────────────────────────────────── */
-.closing-section {
-  background-color: var(--wedding-surface);
-  padding: 3rem 1.5rem 4rem;
-  text-align: center;
-}
-
-.closing-text {
-  font-family: var(--font-display);
-  font-size: clamp(1.5rem, 4vw, 2.125rem);
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--wedding-brand);
-  line-height: 1.4;
-}
 </style>

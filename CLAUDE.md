@@ -81,11 +81,13 @@ Derived from the printed invitation: a periwinkle/cornflower blue background, fl
 
 ### Typography
 
-| Variable | Font | Usage |
-|---|---|---|
-| `--font-display` | Raleway (Google Fonts) | Couple's names, hero titles | bold and uppercase
-| `--font-heading` | Raleway (Google Fonts) | Section headings, nav links | bold and uppercase
-| `--font-body` | Roboto (Google Fonts) | Body copy, form labels, captions |
+| Variable | Font | Usage | Style |
+|---|---|---|---|
+| `--font-display` | Raleway (Google Fonts) | Couple's names, hero titles | bold, uppercase |
+| `--font-heading` | Raleway (Google Fonts) | Section headings, nav links, small labels (eyebrows, buttons, IBAN labels, etc.) | bold, uppercase |
+| `--font-body` | Roboto (Google Fonts) | Body copy, paragraphs, form fields | regular, **sentence case — never uppercase** |
+
+Body text (paragraphs, intro copy, descriptions, notes) is always set in `--font-body` with no `text-transform: uppercase`. Uppercase is reserved for headings, eyebrows, nav links, buttons, and small labels.
 
 Loaded in `index.html` via Google Fonts. Weights: Great Vibes 400; Cormorant Garamond 300/400/500/600 + italic; Inter 300/400/500.
 
@@ -170,9 +172,12 @@ Anche i bambini si divertiranno, troverete a disposizione un servizio di baby-si
 
 
 ### Registry (`/registry`) — `RegistryView.vue`
-- Warm introductory note in Italian
-- Gift cards: PayPal link + external wishlist links
-- Content: **placeholder** — fill in PayPal URL and wishlist links before launch
+- Warm introductory note (#note)
+- Gift cards options: PayPal link and IBAN information
+
+#note = "La vostra presenza è il regalo più grande che potessimo desiderare.
+In caso voleste contribuire al nostro viaggio di nozze, ecco qualche modo per farlo — con tutto il nostro affetto e gratitudine."
+
 
 ### RSVP (`/rsvp`) — `RsvpView.vue`
 - **Submitted via Netlify Forms** (no backend needed)
