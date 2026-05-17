@@ -160,7 +160,7 @@
   align-items: center;
   text-align: center;
   gap: 1rem;
-  box-shadow: 0 4px 24px rgba(133, 153, 197, 0.12);
+  box-shadow: 0 4px 24px rgba(141, 166, 212, 0.12);
 }
 
 .cta-icon {

@@ -76,7 +76,7 @@
   </section>
 
   <!-- ─── Servizio navetta ─────────────────────────────────────────────── -->
-  <section class="shuttle-section" aria-label="Servizio navetta">
+  <section id="shuttle" class="shuttle-section" aria-label="Servizio navetta">
     <div class="shuttle-inner">
       <h2 class="section-heading">Servizio navetta</h2>
       <p class="shuttle-intro">
@@ -235,12 +235,12 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 4px 24px rgba(133, 153, 197, 0.1);
+  box-shadow: 0 4px 24px rgba(141, 166, 212, 0.1);
   transition: box-shadow 0.2s ease, transform 0.2s ease;
 }
 
 .location-card:hover {
-  box-shadow: 0 8px 32px rgba(133, 153, 197, 0.18);
+  box-shadow: 0 8px 32px rgba(141, 166, 212, 0.18);
 }
 
 .location-map {
@@ -331,6 +331,7 @@
 .shuttle-section {
   background-color: var(--wedding-surface-alt);
   padding: 4.5rem 1.5rem;
+  scroll-margin-top: 5rem;
 }
 
 .shuttle-inner {
@@ -383,7 +384,7 @@
 }
 
 .shuttle-card:hover {
-  box-shadow: 0 6px 28px rgba(133, 153, 197, 0.15);
+  box-shadow: 0 6px 28px rgba(141, 166, 212, 0.15);
   border-color: var(--wedding-border);
 }
 
@@ -454,7 +455,7 @@
 }
 
 .travel-card:hover {
-  box-shadow: 0 6px 28px rgba(133, 153, 197, 0.15);
+  box-shadow: 0 6px 28px rgba(141, 166, 212, 0.15);
   border-color: var(--wedding-border);
 }
 

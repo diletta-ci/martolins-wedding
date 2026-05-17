@@ -378,7 +378,7 @@ async function handleSubmit() {
           <p class="field-label" id="shuttle-label">Userete la navetta?</p>
           <p class="field-hint field-hint--standalone">
             Mettiamo a disposizione un servizio navetta dall'hotel fino a Ganci Farm —
-            <RouterLink to="/location" class="hint-link">scopri di più sulla location</RouterLink>.
+            <RouterLink :to="{ path: '/location', hash: '#shuttle' }" class="hint-link">scopri di più sulla location</RouterLink>.
           </p>
           <div class="radio-group" role="radiogroup" aria-labelledby="shuttle-label">
             <label class="radio-option">
@@ -669,7 +669,7 @@ async function handleSubmit() {
 .field-textarea:focus,
 .field-select:focus {
   border-color: var(--wedding-brand);
-  box-shadow: 0 0 0 3px rgba(133, 153, 197, 0.2);
+  box-shadow: 0 0 0 3px rgba(141, 166, 212, 0.2);
 }
 
 /* ── Age input ───────────────────────────────────────────────────────────── */
@@ -1017,7 +1017,7 @@ async function handleSubmit() {
   padding: 0.875rem 2.5rem;
   cursor: pointer;
   transition: background-color 0.15s ease, transform 0.1s ease, box-shadow 0.15s ease;
-  box-shadow: 0 2px 12px rgba(133, 153, 197, 0.35);
+  box-shadow: 0 2px 12px rgba(141, 166, 212, 0.35);
 }
 
 .btn-submit:hover:not(:disabled) {
@@ -1028,7 +1028,7 @@ async function handleSubmit() {
 
 .btn-submit:active:not(:disabled) {
   transform: translateY(0);
-  box-shadow: 0 2px 8px rgba(133, 153, 197, 0.3);
+  box-shadow: 0 2px 8px rgba(141, 166, 212, 0.3);
 }
 
 .btn-submit:disabled {

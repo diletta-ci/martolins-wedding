@@ -218,13 +218,13 @@ const BANK_CAUSALE = "Regalo matrimonio Marta & Giacomo";
 }
 
 .gift-card:hover {
-  box-shadow: 0 6px 28px rgba(133, 153, 197, 0.15);
+  box-shadow: 0 6px 28px rgba(141, 166, 212, 0.15);
   border-color: var(--wedding-border);
 }
 
 .gift-card--primary {
   border-color: var(--wedding-border);
-  box-shadow: 0 2px 12px rgba(133, 153, 197, 0.1);
+  box-shadow: 0 2px 12px rgba(141, 166, 212, 0.1);
 }
 
 .gift-card-icon {
