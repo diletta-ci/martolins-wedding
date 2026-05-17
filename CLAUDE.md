@@ -252,3 +252,11 @@ Never force-push to `main`, never amend already-pushed commits, and never bypass
 
 - No backend, no database — the site must remain purely frontend.
 - No dark mode — not applicable for a wedding site.
+
+## Planning documents
+
+All planning and audit documents live in `planning/`, numbered sequentially
+(e.g. `planning/0001-initial-audit.md`, `planning/0002-…`). When generating a
+new or updated planning doc, **never overwrite an existing file** — always
+create the next-numbered file so the history of recommendations is preserved.
+The latest plan is the highest-numbered file in the folder.
