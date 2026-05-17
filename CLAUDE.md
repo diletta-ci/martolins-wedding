@@ -42,64 +42,37 @@ Vue 3 SPA with TypeScript, Tailwind CSS v4, and Vite.
 
 ---
 
-## Wedding Details
-
-| Field | Value |
-|---|---|
-| Couple | Marta & Giacomo |
-| Date | 29 August 2026 |
-| Venue | Ganci Farm |
-| Address | Via Ganci, 15 — 17015 Celle Ligure SV |
-| Google Maps | https://maps.app.goo.gl/mQHFNGmcrX75JFb88 |
-| Language | Italian only |
-| Deployment | Netlify (auto-deploy from `main`) |
-
----
-
 ## Design System
+
+> **The shipped code is the source of truth for content, colours, and layout.**
+> This document captures conventions and intent only — for any concrete value
+> (hex codes, addresses, dates, form fields), read the code.
 
 ### Visual Identity
 
 Derived from the printed invitation: a periwinkle/cornflower blue background, flowing white calligraphic script for the couple's names, small-caps spaced serif for labels, and a delicate lace border motif. The website uses a white/off-white content surface with the periwinkle as the brand accent.
 
-### Color Tokens (`src/assets/base.css`)
+### Color Tokens
 
-```css
---wedding-brand:       #8599C5   /* periwinkle blue — primary brand */
---wedding-brand-dark:  #6B7FAF   /* hover / active states */
---wedding-brand-light: #C4D0E8   /* tints */
---wedding-brand-pale:  #EEF1F8   /* backgrounds, drawer hover */
---wedding-surface:     #FAFAF8   /* page background */
---wedding-surface-alt: #F3F1ED   /* alternate section background */
---wedding-white:       #FFFFFF
---wedding-ink:         #1C1B18   /* body text */
---wedding-ink-muted:   rgba(28,27,24,0.55)
---wedding-ink-faint:   rgba(28,27,24,0.2)
---wedding-border:      rgba(133,153,197,0.3)
---wedding-border-soft: rgba(133,153,197,0.15)
-```
+Defined in [src/assets/base.css](src/assets/base.css) as `--wedding-*` CSS custom properties (brand / brand-dark / brand-light / brand-pale, surface variants, ink variants, borders). That file is the authoritative source for hex values.
 
 ### Typography
 
 | Variable | Font | Usage | Style |
 |---|---|---|---|
-| `--font-display` | Raleway (Google Fonts) | Couple's names, hero titles | bold, uppercase |
-| `--font-heading` | Raleway (Google Fonts) | Section headings, nav links, small labels (eyebrows, buttons, IBAN labels, etc.) | bold, uppercase |
-| `--font-body` | Roboto (Google Fonts) | Body copy, paragraphs, form fields | regular, **sentence case — never uppercase** |
+| `--font-display` | Raleway | Couple's names, hero titles | bold, uppercase |
+| `--font-heading` | Raleway | Section headings, nav links, small labels (eyebrows, buttons, IBAN labels, etc.) | bold, uppercase |
+| `--font-body` | Roboto | Body copy, paragraphs, form fields | regular, **sentence case — never uppercase** |
 
 Body text (paragraphs, intro copy, descriptions, notes) is always set in `--font-body` with no `text-transform: uppercase`. Uppercase is reserved for headings, eyebrows, nav links, buttons, and small labels.
 
-Loaded in `index.html` via Google Fonts. Weights: Great Vibes 400; Cormorant Garamond 300/400/500/600 + italic; Inter 300/400/500.
+### Tailwind Utilities
 
-### Tailwind Utilities (`src/assets/main.css`)
-
-The `@theme` block in `main.css` exposes all tokens as Tailwind utility classes:
-`bg-brand`, `bg-brand-dark`, `bg-brand-pale`, `bg-surface`, `bg-surface-alt`,
-`text-brand`, `text-ink`, `font-display`, `font-heading`, `font-body`.
+`src/assets/main.css` re-exposes the design tokens in a Tailwind v4 `@theme` block so they're available as utility classes (`bg-brand`, `text-ink`, `font-display`, …).
 
 ### Shared Components
 
-**`AppNav.vue`** — Sticky white navigation bar. Great Vibes "M & G" wordmark, Cormorant Garamond small-caps links, periwinkle active state. Mobile hamburger drawer collapses at `sm` breakpoint.
+**`AppNav.vue`** — sticky white navigation bar with an "M & G" wordmark and a periwinkle active state. Mobile hamburger drawer collapses at the `sm` breakpoint.
 
 ### Page Header Pattern
 
@@ -123,110 +96,6 @@ Every view **except the home page** opens with the same hero block: white text o
 - **Subtitle** — always the wedding date in the canonical format `29 · 8 · 2026`. No venue, no city, no extra suffix.
 
 The CSS for `.page-header`, `.page-header-inner`, `.page-eyebrow`, `.page-title`, `.page-subtitle` is currently duplicated across views. If a third style adjustment is needed, lift it into a shared `PageHeader.vue` component rather than editing each file.
-
----
-
-## Page Plan
-
-### Home (`/`) — `HomeView.vue`
-The homepage needs to be a full-viewport hero on brand blue background with the following elements all centered:
-1. Center image of the calligraphy names (names-calligraphy.png)
-2. the illustration of the couple (illustration-martaegiacomo.png) centered 
-3. Central text: “Ci sposiamo!”
-4. the date using the calligraphy image (date-calligraphy.png)
-
-All the elements are place centered in the specified order. 
-All the images can be found in the folder “src/assets/images”
-
-
-### Location (`/location`) — `LocationView.vue`
-Location
-
-The location page is composed by
-1. Section with two columns for the locations
-- The Ceremony (“Cerimonia civile”) location 
-- The Lunch and party (“Ricevimento”).
-2. Section with Bus Services (“Servizio navetta”) with the relatively info.
-3. Prose section with travel tips from Torino and Genova
-
-The locations need both the google maps link to obtain indication and maps preview.
-Use the follow information to complete the information of the page:
-
-Cerimonia civile
-Via Mezzalunga, 2, 17015 Celle Ligure
-Ore 11:30
-
-Ricevimento
-Ganci Farm
-Via Ganci, 15, 17015 Celle Ligure
-Pranzo ore 13:30
-È disponibile il parcheggio della location.
-
-Servizio navetta:
-Dal luogo della cerimonia al ricevimento sarà disponibile un servizio navetta per chi non ha un mezzo proprio o nel caso si volesse lasciare la propria auto nel luogo della cerimonia (Celle Ligure).
-
-Andata:
-La partenza della navetta è prevista alla fine della cerimonia dal parcheggio davanti ai giardini Mezzalunga di Celle Ligure (google maps).
-
-Ritorno: 
-Il ritorno della navetta è previsto dal luogo del ricevimento a Celle Ligure, Ganci Farm alle ore 23:00 (orario ancora da confermare).
-
-### Schedule (`/schedule`) — `ScheduleView.vue`
-- Vertical visual timeline of the wedding day
-- Rendered via `WeddingTimeline.vue` component (accepts `{ time, title, description }[]` prop)
-- Content is the following:
-
-Programma
-
-1. Cerimonia civile
-Via Mezzalunga, 2, 17015 Celle Ligure
-Ore 11:30
-
-2. Ricevimento
-Ganci Farm
-Via Ganci, 15, 17015 Celle Ligure
-Pranzo ore 13:30
-
-3. Festeggiamenti
-Seguiranno torta e festeggiamenti!
-Si apre la pista! La giornata continua con musica e tanta voglia di ballare e stare insieme.
-
-Anche i bambini si divertiranno, troverete a disposizione un servizio di baby-sitting durante tutta la durata dell’evento.
-
-
-### Registry (`/registry`) — `RegistryView.vue`
-- Warm introductory note (#note)
-- Gift cards options: PayPal link and IBAN information
-
-#note = "La vostra presenza è il regalo più grande che potessimo desiderare.
-In caso voleste contribuire al nostro viaggio di nozze, ecco qualche modo per farlo — con tutto il nostro affetto e gratitudine."
-
-
-### RSVP (`/rsvp`) — `RsvpView.vue`
-- **Submitted via Netlify Forms** (no backend needed)
-- Form fields:
-  - Nome e cognome (required)
-  - Parteciperò: Sì / No (radio, required)
-  - Numero di adulti: 1 o 2 (conditional on Sì — accounts for +1)
-  - Bambini sotto gli 11 anni: 0 / 1 / 2 / 3+ (conditional on Sì)
-  - Intolleranze alimentari o allergie (textarea, conditional on Sì)
-  - Messaggio per Marta e Giacomo (textarea, optional)
-- On success: inline confirmation message, no page redirect
-- Netlify Forms setup: static hidden form in `index.html` + `fetch()` POST in the Vue component
-
-
-### Album (`/album`) — `AlbumView.vue`
-Photo and video sharing page for wedding guests via **WedShoots** (wedshoots.com/it — free service).
-
-Structure:
-- Brand blue page header (eyebrow "I vostri ricordi", title "Foto & Video")
-- Warm intro paragraph inviting guests to share their shots
-- CTA card (centred, white card with camera icon) containing:
-  - Title + description mentioning WedShoots by name
-  - "Apri l'album" button — `href="#wedshoots-placeholder"` ⚠️ **must be replaced with the real WedShoots album link before the wedding**
-  - Italic note that the link goes live on 29 agosto
-
-**Before launch:** create the album at https://www.wedshoots.com/it, then replace `#wedshoots-placeholder` in `AlbumView.vue` with the real shareable link or album code.
 
 ---
 
