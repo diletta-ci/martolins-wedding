@@ -10,6 +10,7 @@ const links = [
   { to: "/schedule", label: "Programma", name: "schedule" },
   { to: "/registry", label: "Regalo", name: "registry" },
   { to: "/rsvp", label: "RSVP", name: "rsvp" },
+  { to: "/album", label: "Foto", name: "album" },
 ] as const;
 
 function closeMenu() {

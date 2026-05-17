@@ -29,6 +29,11 @@ const router = createRouter({
       name: "rsvp",
       component: () => import("../views/RsvpView.vue"),
     },
+    {
+      path: "/album",
+      name: "album",
+      component: () => import("../views/AlbumView.vue"),
+    },
   ],
 });
 
