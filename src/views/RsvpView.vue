@@ -5,12 +5,13 @@ import { ref, computed, watch } from 'vue'
 interface Guest {
   nome: string
   cognome: string
+  allergies: string
 }
 
-const guests = ref<Guest[]>([{ nome: '', cognome: '' }])
+const guests = ref<Guest[]>([{ nome: '', cognome: '', allergies: '' }])
 
 function addGuest() {
-  guests.value.push({ nome: '', cognome: '' })
+  guests.value.push({ nome: '', cognome: '', allergies: '' })
 }
 
 function removeGuest(index: number) {
@@ -19,16 +20,21 @@ function removeGuest(index: number) {
   }
 }
 
-// ── Children ages ────────────────────────────────────────────────────────────
-const childrenAges = ref<string[]>([''])
+// ── Children ─────────────────────────────────────────────────────────────────
+interface Child {
+  age: string
+  allergies: string
+}
+
+const children = ref<Child[]>([{ age: '', allergies: '' }])
 
 function addChild() {
-  childrenAges.value.push('')
+  children.value.push({ age: '', allergies: '' })
 }
 
 function removeChild(index: number) {
-  if (childrenAges.value.length > 1) {
-    childrenAges.value.splice(index, 1)
+  if (children.value.length > 1) {
+    children.value.splice(index, 1)
   }
 }
 
@@ -86,14 +92,23 @@ async function handleSubmit() {
     .map((g, i) => `${i + 1}. ${g.nome} ${g.cognome}`.trim())
     .join('\n')
 
+  const adultAllergies = filledGuests
+    .map((g, i) => `Adulto ${i + 1}: ${g.allergies.trim() || 'nessuna'}`)
+    .join('; ')
+  const childAllergies = showChildren.value
+    ? children.value.map((c, i) => `Bambino ${i + 1}: ${c.allergies.trim() || 'nessuna'}`).join('; ')
+    : ''
+
   const payload = new URLSearchParams({
     'form-name': 'rsvp',
     'bot-field': '',
     party_size: String(filledGuests.length),
     guest_names: guestNames,
     has_children: form.value.has_children,
-    children_count: showChildren.value ? String(childrenAges.value.length) : '',
-    children_ages: showChildren.value ? childrenAges.value.join(', ') : '',
+    children_count: showChildren.value ? String(children.value.length) : '',
+    children_ages: showChildren.value ? children.value.map((c) => c.age).join(', ') : '',
+    adult_allergies: adultAllergies,
+    child_allergies: childAllergies,
     dietary_none: form.value.dietary_none ? 'sì' : 'no',
     dietary_celiac: form.value.dietary_celiac ? 'sì' : 'no',
     dietary_allergies: form.value.dietary_allergies ? 'sì' : 'no',
@@ -210,6 +225,18 @@ async function handleSubmit() {
                   :required="index === 0"
                 />
               </div>
+              <div class="field guest-fields__allergies">
+                <label class="field-label" :for="`allergies_adult_${index}`">
+                  Allergie / intolleranze — Adulto {{ index + 1 }}
+                </label>
+                <input
+                  :id="`allergies_adult_${index}`"
+                  v-model="guest.allergies"
+                  type="text"
+                  class="field-input"
+                  placeholder="es. arachidi, latticini — lascia vuoto se nessuna"
+                />
+              </div>
             </div>
             <button
               v-if="guests.length > 1"
@@ -257,31 +284,16 @@ async function handleSubmit() {
 
         <Transition name="slide-down">
           <div v-if="showChildren" class="conditional-fields">
-            <div class="field">
-              <p class="field-label">Quanti anni hanno?</p>
-              <TransitionGroup name="guest-row" tag="div" class="child-list">
-                <div
-                  v-for="(_, index) in childrenAges"
-                  :key="index"
-                  class="child-row"
-                >
-                  <div class="field">
-                    <label class="field-label field-label--sr" :for="`child_age_${index}`">
-                      Età bambino {{ index + 1 }}
-                    </label>
-                    <input
-                      :id="`child_age_${index}`"
-                      v-model="childrenAges[index]"
-                      type="number"
-                      class="field-input field-input--age"
-                      min="0"
-                      max="17"
-                      placeholder="Anni"
-                      required
-                    />
-                  </div>
+            <TransitionGroup name="guest-row" tag="div" class="child-list">
+              <div
+                v-for="(child, index) in children"
+                :key="index"
+                class="child-entry"
+              >
+                <div class="child-entry-header">
+                  <span class="child-entry-label">Bambino {{ index + 1 }}</span>
                   <button
-                    v-if="childrenAges.length > 1"
+                    v-if="children.length > 1"
                     type="button"
                     class="btn-remove-guest"
                     :aria-label="`Rimuovi bambino ${index + 1}`"
@@ -290,13 +302,40 @@ async function handleSubmit() {
                     ×
                   </button>
                 </div>
-              </TransitionGroup>
+                <div class="child-entry-fields">
+                  <div class="field">
+                    <label class="field-label" :for="`child_age_${index}`">Età</label>
+                    <input
+                      :id="`child_age_${index}`"
+                      v-model="child.age"
+                      type="number"
+                      class="field-input field-input--age"
+                      min="0"
+                      max="17"
+                      placeholder="Anni"
+                      required
+                    />
+                  </div>
+                  <div class="field child-entry-fields__allergies">
+                    <label class="field-label" :for="`allergies_child_${index}`">
+                      Allergie / intolleranze
+                    </label>
+                    <input
+                      :id="`allergies_child_${index}`"
+                      v-model="child.allergies"
+                      type="text"
+                      class="field-input"
+                      placeholder="es. arachidi — lascia vuoto se nessuna"
+                    />
+                  </div>
+                </div>
+              </div>
+            </TransitionGroup>
 
-              <button type="button" class="btn-add-guest" @click="addChild">
-                <span class="btn-add-icon" aria-hidden="true">+</span>
-                Aggiungi bambino
-              </button>
-            </div>
+            <button type="button" class="btn-add-guest" @click="addChild">
+              <span class="btn-add-icon" aria-hidden="true">+</span>
+              Aggiungi bambino
+            </button>
           </div>
         </Transition>
       </fieldset>
@@ -801,10 +840,40 @@ async function handleSubmit() {
   margin-bottom: 0.75rem;
 }
 
-.child-row {
+.child-entry {
   display: flex;
-  align-items: flex-end;
-  gap: 0.375rem;
+  flex-direction: column;
+  gap: 0.625rem;
+  padding: 1rem;
+  border: 1px solid var(--wedding-border-soft);
+  border-radius: 0.5rem;
+  background: var(--wedding-surface);
+}
+
+.child-entry-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.child-entry-label {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--wedding-brand-dark);
+  letter-spacing: 0.02em;
+}
+
+.child-entry-fields {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.75rem;
+  align-items: end;
+}
+
+.child-entry-fields__allergies,
+.guest-fields__allergies {
+  grid-column: 1 / -1;
 }
 
 /* ── Guest list ──────────────────────────────────────────────────────────── */
