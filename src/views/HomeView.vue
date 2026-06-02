@@ -100,13 +100,18 @@ import dateUrl from "@/assets/images/date-calligraphy.png";
 .hero-illustration {
   width: 100%;
   flex: 1 1 auto;
-  min-height: 0;
-  max-height: 80svh;
+  min-height: 35svh;
+  max-height: 78svh;
   height: auto;
   object-fit: contain;
-  /* gentle drop shadow to lift off the blue */
   filter: drop-shadow(0 8px 24px rgba(40, 50, 90, 0.18));
   user-select: none;
+}
+
+@media (max-width: 480px) {
+  .hero-illustration {
+    min-height: 42svh;
+  }
 }
 
 .hero-date {
