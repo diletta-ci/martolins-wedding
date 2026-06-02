@@ -13,13 +13,13 @@ const events: TimelineEvent[] = [
     time: "13:30",
     title: "Ricevimento",
     description:
-      "Ganci Farm — Via Ganci, 15 — 17015 Celle Ligure. Pranzo immerso nel verde delle colline liguri.",
+      "Ganci Farm — Via Ganci, 15 — 17015 Celle Ligure",
     icon: "fork",
   },
   {
     title: "Festeggiamenti",
     description:
-      "Seguiranno torta e festeggiamenti! Si apre la pista: la giornata continua con musica e tanta voglia di ballare e stare insieme. Anche i bambini si divertiranno — sarà disponibile un servizio di baby-sitting durante tutta la durata dell'evento.",
+      "Seguiranno torta e festeggiamenti!",
     icon: "music",
   },
 ];
