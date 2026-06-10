@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { ref, computed, watch } from 'vue'
-import { RouterLink } from 'vue-router'
 
 // ── Guest list ───────────────────────────────────────────────────────────────
 interface Guest {
@@ -42,8 +41,6 @@ const form = ref({
   dietary_allergies_detail: '',
   dietary_vegetarian: false,
   dietary_vegan: false,
-  uses_shuttle: '' as 'si' | 'no' | '',
-  shuttle_count: '1',
 })
 
 const submitting = ref(false)
@@ -53,7 +50,6 @@ const submitError = ref('')
 // ── Conditional visibility ───────────────────────────────────────────────────
 const showChildren = computed(() => form.value.has_children === 'si')
 const showAllergiesDetail = computed(() => form.value.dietary_allergies)
-const showShuttleCount = computed(() => form.value.uses_shuttle === 'si')
 
 // ── Dietary mutual exclusion ─────────────────────────────────────────────────
 watch(() => form.value.dietary_none, (val) => {
@@ -106,8 +102,6 @@ async function handleSubmit() {
       : '',
     dietary_vegetarian: form.value.dietary_vegetarian ? 'sì' : 'no',
     dietary_vegan: form.value.dietary_vegan ? 'sì' : 'no',
-    uses_shuttle: form.value.uses_shuttle,
-    shuttle_count: showShuttleCount.value ? form.value.shuttle_count : '',
   })
 
   try {
@@ -367,51 +361,6 @@ async function handleSubmit() {
         </div>
       </fieldset>
 
-      <!-- ── Gruppo 4: La navetta ────────────────────────────────────── -->
-      <fieldset class="form-group">
-        <legend class="group-legend">
-          <span class="group-number">4</span>
-          La navetta
-        </legend>
-
-        <div class="field">
-          <p class="field-label" id="shuttle-label">Userete la navetta?</p>
-          <p class="field-hint field-hint--standalone">
-            Mettiamo a disposizione un servizio navetta dall'hotel fino a Ganci Farm —
-            <RouterLink :to="{ path: '/location', hash: '#shuttle' }" class="hint-link">scopri di più sulla location</RouterLink>.
-          </p>
-          <div class="radio-group" role="radiogroup" aria-labelledby="shuttle-label">
-            <label class="radio-option">
-              <input type="radio" v-model="form.uses_shuttle" value="si" />
-              <span class="radio-mark" />
-              <span class="radio-text">Sì, useremo la navetta</span>
-            </label>
-            <label class="radio-option">
-              <input type="radio" v-model="form.uses_shuttle" value="no" />
-              <span class="radio-mark" />
-              <span class="radio-text">No, ci organizziamo autonomamente</span>
-            </label>
-          </div>
-        </div>
-
-        <Transition name="slide-down">
-          <div v-if="showShuttleCount" class="conditional-fields">
-            <div class="field">
-              <label class="field-label" for="shuttle_count">In quanti userete la navetta?</label>
-              <div class="select-wrapper select-wrapper--narrow">
-                <select id="shuttle_count" v-model="form.shuttle_count" class="field-select">
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5 o più</option>
-                </select>
-              </div>
-            </div>
-          </div>
-        </Transition>
-      </fieldset>
-
       <!-- ── Error message ──────────────────────────────────────────── -->
       <p v-if="submitError" class="form-error" role="alert">
         {{ submitError }}
@@ -639,16 +588,6 @@ async function handleSubmit() {
   margin-top: 0;
 }
 
-.hint-link {
-  color: var(--wedding-brand);
-  text-decoration: underline;
-  text-underline-offset: 2px;
-  transition: color 0.15s ease;
-}
-
-.hint-link:hover {
-  color: var(--wedding-brand-dark);
-}
 
 .field-input,
 .field-textarea,
