@@ -33,26 +33,6 @@ import dateUrl from "@/assets/images/date-calligraphy.png";
     </div>
   </section>
 
-  <!-- ─── Welcome ───────────────────────────────────────────────────── -->
-  <section class="welcome-section">
-    <div class="welcome-inner">
-      <h2 class="welcome-heading">Cari amici e familiari,</h2>
-      <p class="welcome-body">
-        Siamo felicissimi di condividere con voi il giorno del nostro matrimonio.
-        Il 29 agosto 2026 ci sposeremo nella magica cornice di Ganci Farm,
-        immersa nelle colline liguri di Celle Ligure.
-      </p>
-      <p class="welcome-body">
-        In queste pagine troverete tutte le informazioni di cui avete bisogno:
-        come raggiungerci, il programma della giornata, il regalo
-        e, naturalmente, il modulo per confermare la vostra partecipazione.
-      </p>
-      <p class="welcome-body welcome-body--signed">
-        Non vediamo l'ora di festeggiare insieme a voi.
-      </p>
-      <p class="welcome-signature">Marta &amp; Giacomo</p>
-    </div>
-  </section>
 </template>
 
 <style scoped>
@@ -127,50 +107,4 @@ import dateUrl from "@/assets/images/date-calligraphy.png";
   margin-top: 0.5rem;
 }
 
-/* ── Welcome section ──────────────────────────────────────────────────── */
-.welcome-section {
-  background-color: var(--wedding-surface-alt);
-  padding: 4rem 1.5rem;
-}
-
-.welcome-inner {
-  max-width: var(--content-max);
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-}
-
-.welcome-heading {
-  font-family: var(--font-heading);
-  font-size: clamp(1.375rem, 3.5vw, 1.875rem);
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--wedding-brand-dark);
-  margin-bottom: 0.25rem;
-}
-
-.welcome-body {
-  font-family: var(--font-body);
-  font-size: 1.0625rem;
-  line-height: 1.8;
-  color: var(--wedding-ink);
-}
-
-.welcome-body--signed {
-  color: var(--wedding-ink-muted);
-  font-style: italic;
-}
-
-.welcome-signature {
-  font-family: var(--font-display);
-  font-size: clamp(1.5rem, 4vw, 2rem);
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.22em;
-  color: var(--wedding-brand);
-  line-height: 1.1;
-  margin-top: 0.5rem;
-}
 </style>
