@@ -36,10 +36,17 @@ import dateUrl from "@/assets/images/date-calligraphy.png";
 </template>
 
 <style scoped>
+/* ── Nav height token (must match AppNav .nav-inner height: 3.75rem) ──── */
+:root {
+  --nav-h: 3.75rem;
+}
+
 /* ── Hero ──────────────────────────────────────────────────────────────── */
 .hero {
   position: relative;
-  min-height: 100svh;
+  /* Subtract the sticky nav so hero + nav = exactly one viewport, no scroll */
+  height: calc(100vh - var(--nav-h));
+  height: calc(100dvh - var(--nav-h));
   width: 100%;
   background-color: var(--wedding-brand);
   display: flex;
@@ -65,7 +72,7 @@ import dateUrl from "@/assets/images/date-calligraphy.png";
   margin: 0;
   text-align: center;
   width: 100%;
-  height: 100svh;
+  height: 100%;
   justify-content: center;
 }
 
@@ -80,11 +87,10 @@ import dateUrl from "@/assets/images/date-calligraphy.png";
 .hero-illustration {
   width: 100%;
   flex: 1 1 auto;
-  min-height: 0;
-  max-height: 80svh;
+  min-height: 30dvh;
+  max-height: 65dvh;
   height: auto;
   object-fit: contain;
-  /* gentle drop shadow to lift off the blue */
   filter: drop-shadow(0 8px 24px rgba(40, 50, 90, 0.18));
   user-select: none;
 }
