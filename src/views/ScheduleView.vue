@@ -6,7 +6,7 @@ const events: TimelineEvent[] = [
   {
     time: "11:30",
     title: "Cerimonia civile",
-    description: "Via Mezzalunga, 2 — 17015 Celle Ligure",
+    description: "Ganci Farm — Via Ganci, 15 — 17015 Celle Ligure",
     icon: "rings",
   },
   {
