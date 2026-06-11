@@ -1,17 +1,55 @@
 <script setup lang="ts">
-import { ref, computed, watch } from 'vue'
+import { ref, computed } from 'vue'
+
+// ── Dietary helpers ───────────────────────────────────────────────────────────
+interface Dietary {
+  none: boolean
+  celiac: boolean
+  allergies: boolean
+  allergies_detail: string
+  vegetarian: boolean
+  vegan: boolean
+}
+
+function newDietary(): Dietary {
+  return { none: false, celiac: false, allergies: false, allergies_detail: '', vegetarian: false, vegan: false }
+}
+
+function toggleDietaryNone(d: Dietary) {
+  if (d.none) {
+    d.celiac = false
+    d.allergies = false
+    d.allergies_detail = ''
+    d.vegetarian = false
+    d.vegan = false
+  }
+}
+
+function clearDietaryNone(d: Dietary) {
+  if (d.celiac || d.allergies || d.vegetarian || d.vegan) d.none = false
+}
+
+function serializeDietary(d: Dietary): string {
+  if (d.none) return 'nessuna restrizione'
+  const parts: string[] = []
+  if (d.celiac) parts.push('celiachia')
+  if (d.allergies) parts.push(d.allergies_detail ? `allergie alimentari (${d.allergies_detail})` : 'allergie alimentari')
+  if (d.vegetarian) parts.push('vegetariano/a')
+  if (d.vegan) parts.push('vegano/a')
+  return parts.length ? parts.join(', ') : 'nessuna restrizione'
+}
 
 // ── Guest list ───────────────────────────────────────────────────────────────
 interface Guest {
   nome: string
   cognome: string
-  allergies: string
+  dietary: Dietary
 }
 
-const guests = ref<Guest[]>([{ nome: '', cognome: '', allergies: '' }])
+const guests = ref<Guest[]>([{ nome: '', cognome: '', dietary: newDietary() }])
 
 function addGuest() {
-  guests.value.push({ nome: '', cognome: '', allergies: '' })
+  guests.value.push({ nome: '', cognome: '', dietary: newDietary() })
 }
 
 function removeGuest(index: number) {
@@ -23,13 +61,13 @@ function removeGuest(index: number) {
 // ── Children ─────────────────────────────────────────────────────────────────
 interface Child {
   age: string
-  allergies: string
+  dietary: Dietary
 }
 
-const children = ref<Child[]>([{ age: '', allergies: '' }])
+const children = ref<Child[]>([{ age: '', dietary: newDietary() }])
 
 function addChild() {
-  children.value.push({ age: '', allergies: '' })
+  children.value.push({ age: '', dietary: newDietary() })
 }
 
 function removeChild(index: number) {
@@ -41,12 +79,7 @@ function removeChild(index: number) {
 // ── Form state ───────────────────────────────────────────────────────────────
 const form = ref({
   has_children: '' as 'si' | 'no' | '',
-  dietary_none: false,
-  dietary_celiac: false,
-  dietary_allergies: false,
-  dietary_allergies_detail: '',
-  dietary_vegetarian: false,
-  dietary_vegan: false,
+  notes: '',
 })
 
 const submitting = ref(false)
@@ -55,30 +88,6 @@ const submitError = ref('')
 
 // ── Conditional visibility ───────────────────────────────────────────────────
 const showChildren = computed(() => form.value.has_children === 'si')
-const showAllergiesDetail = computed(() => form.value.dietary_allergies)
-
-// ── Dietary mutual exclusion ─────────────────────────────────────────────────
-watch(() => form.value.dietary_none, (val) => {
-  if (val) {
-    form.value.dietary_celiac = false
-    form.value.dietary_allergies = false
-    form.value.dietary_allergies_detail = ''
-    form.value.dietary_vegetarian = false
-    form.value.dietary_vegan = false
-  }
-})
-
-watch(
-  () => [
-    form.value.dietary_celiac,
-    form.value.dietary_allergies,
-    form.value.dietary_vegetarian,
-    form.value.dietary_vegan,
-  ],
-  (vals) => {
-    if (vals.some(Boolean)) form.value.dietary_none = false
-  },
-)
 
 // ── Submit ───────────────────────────────────────────────────────────────────
 async function handleSubmit() {
@@ -93,10 +102,11 @@ async function handleSubmit() {
     .join('\n')
 
   const adultAllergies = filledGuests
-    .map((g, i) => `Adulto ${i + 1}: ${g.allergies.trim() || 'nessuna'}`)
+    .map((g, i) => `Adulto ${i + 1}: ${serializeDietary(g.dietary)}`)
     .join('; ')
+
   const childAllergies = showChildren.value
-    ? children.value.map((c, i) => `Bambino ${i + 1}: ${c.allergies.trim() || 'nessuna'}`).join('; ')
+    ? children.value.map((c, i) => `Bambino ${i + 1}: ${serializeDietary(c.dietary)}`).join('; ')
     : ''
 
   const payload = new URLSearchParams({
@@ -109,14 +119,7 @@ async function handleSubmit() {
     children_ages: showChildren.value ? children.value.map((c) => c.age).join(', ') : '',
     adult_allergies: adultAllergies,
     child_allergies: childAllergies,
-    dietary_none: form.value.dietary_none ? 'sì' : 'no',
-    dietary_celiac: form.value.dietary_celiac ? 'sì' : 'no',
-    dietary_allergies: form.value.dietary_allergies ? 'sì' : 'no',
-    dietary_allergies_detail: showAllergiesDetail.value
-      ? form.value.dietary_allergies_detail
-      : '',
-    dietary_vegetarian: form.value.dietary_vegetarian ? 'sì' : 'no',
-    dietary_vegan: form.value.dietary_vegan ? 'sì' : 'no',
+    notes: form.value.notes,
   })
 
   try {
@@ -225,17 +228,48 @@ async function handleSubmit() {
                   :required="index === 0"
                 />
               </div>
-              <div class="field guest-fields__allergies">
-                <label class="field-label" :for="`allergies_adult_${index}`">
-                  Allergie / intolleranze — Adulto {{ index + 1 }}
-                </label>
-                <input
-                  :id="`allergies_adult_${index}`"
-                  v-model="guest.allergies"
-                  type="text"
-                  class="field-input"
-                  placeholder="es. arachidi, latticini — lascia vuoto se nessuna"
-                />
+              <div class="field guest-fields__dietary">
+                <p class="field-label">Esigenze alimentari — Adulto {{ index + 1 }}</p>
+                <div class="checkbox-group">
+                  <label class="checkbox-option checkbox-option--none">
+                    <input type="checkbox" v-model="guest.dietary.none" @change="toggleDietaryNone(guest.dietary)" />
+                    <span class="checkbox-mark" />
+                    <span class="checkbox-text">Nessuna restrizione, mangio tutto</span>
+                  </label>
+                  <div class="dietary-divider" aria-hidden="true" />
+                  <label class="checkbox-option">
+                    <input type="checkbox" v-model="guest.dietary.celiac" @change="clearDietaryNone(guest.dietary)" />
+                    <span class="checkbox-mark" />
+                    <span class="checkbox-text">Celiachia</span>
+                  </label>
+                  <label class="checkbox-option">
+                    <input type="checkbox" v-model="guest.dietary.allergies" @change="clearDietaryNone(guest.dietary)" />
+                    <span class="checkbox-mark" />
+                    <span class="checkbox-text">Allergie alimentari</span>
+                  </label>
+                  <Transition name="slide-down">
+                    <div v-if="guest.dietary.allergies" class="field field--indent">
+                      <label class="field-label" :for="`allergies_detail_adult_${index}`">Specificare quali allergie</label>
+                      <input
+                        :id="`allergies_detail_adult_${index}`"
+                        v-model="guest.dietary.allergies_detail"
+                        type="text"
+                        class="field-input"
+                        placeholder="es. arachidi, latticini, glutine…"
+                      />
+                    </div>
+                  </Transition>
+                  <label class="checkbox-option">
+                    <input type="checkbox" v-model="guest.dietary.vegetarian" @change="clearDietaryNone(guest.dietary)" />
+                    <span class="checkbox-mark" />
+                    <span class="checkbox-text">Dieta vegetariana</span>
+                  </label>
+                  <label class="checkbox-option">
+                    <input type="checkbox" v-model="guest.dietary.vegan" @change="clearDietaryNone(guest.dietary)" />
+                    <span class="checkbox-mark" />
+                    <span class="checkbox-text">Dieta vegana</span>
+                  </label>
+                </div>
               </div>
             </div>
             <button
@@ -302,31 +336,60 @@ async function handleSubmit() {
                     ×
                   </button>
                 </div>
-                <div class="child-entry-fields">
-                  <div class="field">
-                    <label class="field-label" :for="`child_age_${index}`">Età</label>
-                    <input
-                      :id="`child_age_${index}`"
-                      v-model="child.age"
-                      type="number"
-                      class="field-input field-input--age"
-                      min="0"
-                      max="17"
-                      placeholder="Anni"
-                      required
-                    />
-                  </div>
-                  <div class="field child-entry-fields__allergies">
-                    <label class="field-label" :for="`allergies_child_${index}`">
-                      Allergie / intolleranze
+                <div class="field">
+                  <label class="field-label" :for="`child_age_${index}`">Età</label>
+                  <input
+                    :id="`child_age_${index}`"
+                    v-model="child.age"
+                    type="number"
+                    class="field-input field-input--age"
+                    min="0"
+                    max="17"
+                    placeholder="Anni"
+                    required
+                  />
+                </div>
+                <div class="field">
+                  <p class="field-label">Esigenze alimentari</p>
+                  <div class="checkbox-group">
+                    <label class="checkbox-option checkbox-option--none">
+                      <input type="checkbox" v-model="child.dietary.none" @change="toggleDietaryNone(child.dietary)" />
+                      <span class="checkbox-mark" />
+                      <span class="checkbox-text">Nessuna restrizione, mangio tutto</span>
                     </label>
-                    <input
-                      :id="`allergies_child_${index}`"
-                      v-model="child.allergies"
-                      type="text"
-                      class="field-input"
-                      placeholder="es. arachidi — lascia vuoto se nessuna"
-                    />
+                    <div class="dietary-divider" aria-hidden="true" />
+                    <label class="checkbox-option">
+                      <input type="checkbox" v-model="child.dietary.celiac" @change="clearDietaryNone(child.dietary)" />
+                      <span class="checkbox-mark" />
+                      <span class="checkbox-text">Celiachia</span>
+                    </label>
+                    <label class="checkbox-option">
+                      <input type="checkbox" v-model="child.dietary.allergies" @change="clearDietaryNone(child.dietary)" />
+                      <span class="checkbox-mark" />
+                      <span class="checkbox-text">Allergie alimentari</span>
+                    </label>
+                    <Transition name="slide-down">
+                      <div v-if="child.dietary.allergies" class="field field--indent">
+                        <label class="field-label" :for="`allergies_detail_child_${index}`">Specificare quali allergie</label>
+                        <input
+                          :id="`allergies_detail_child_${index}`"
+                          v-model="child.dietary.allergies_detail"
+                          type="text"
+                          class="field-input"
+                          placeholder="es. arachidi, latticini, glutine…"
+                        />
+                      </div>
+                    </Transition>
+                    <label class="checkbox-option">
+                      <input type="checkbox" v-model="child.dietary.vegetarian" @change="clearDietaryNone(child.dietary)" />
+                      <span class="checkbox-mark" />
+                      <span class="checkbox-text">Dieta vegetariana</span>
+                    </label>
+                    <label class="checkbox-option">
+                      <input type="checkbox" v-model="child.dietary.vegan" @change="clearDietaryNone(child.dietary)" />
+                      <span class="checkbox-mark" />
+                      <span class="checkbox-text">Dieta vegana</span>
+                    </label>
                   </div>
                 </div>
               </div>
@@ -340,63 +403,25 @@ async function handleSubmit() {
         </Transition>
       </fieldset>
 
-      <!-- ── Gruppo 3: Esigenze alimentari ──────────────────────────── -->
+      <!-- ── Gruppo 3: Note aggiuntive ─────────────────────────────── -->
       <fieldset class="form-group">
         <legend class="group-legend">
           <span class="group-number">3</span>
-          Esigenze alimentari
+          Note aggiuntive
         </legend>
 
         <div class="field">
-          <p class="field-label">Quali sono le vostre esigenze alimentari?</p>
-          <p class="field-hint field-hint--standalone">Seleziona tutto ciò che si applica</p>
-
-          <div class="checkbox-group">
-            <label class="checkbox-option checkbox-option--none">
-              <input type="checkbox" v-model="form.dietary_none" />
-              <span class="checkbox-mark" />
-              <span class="checkbox-text">Nessuna restrizione, mangio tutto</span>
-            </label>
-
-            <div class="dietary-divider" aria-hidden="true" />
-
-            <label class="checkbox-option">
-              <input type="checkbox" v-model="form.dietary_celiac" />
-              <span class="checkbox-mark" />
-              <span class="checkbox-text">Celiachia</span>
-            </label>
-
-            <label class="checkbox-option">
-              <input type="checkbox" v-model="form.dietary_allergies" />
-              <span class="checkbox-mark" />
-              <span class="checkbox-text">Allergie alimentari</span>
-            </label>
-
-            <Transition name="slide-down">
-              <div v-if="showAllergiesDetail" class="field field--indent">
-                <label class="field-label" for="allergies_detail">Specificare quali allergie</label>
-                <input
-                  id="allergies_detail"
-                  v-model="form.dietary_allergies_detail"
-                  type="text"
-                  class="field-input"
-                  placeholder="es. arachidi, latticini, glutine…"
-                />
-              </div>
-            </Transition>
-
-            <label class="checkbox-option">
-              <input type="checkbox" v-model="form.dietary_vegetarian" />
-              <span class="checkbox-mark" />
-              <span class="checkbox-text">Dieta vegetariana</span>
-            </label>
-
-            <label class="checkbox-option">
-              <input type="checkbox" v-model="form.dietary_vegan" />
-              <span class="checkbox-mark" />
-              <span class="checkbox-text">Dieta vegana</span>
-            </label>
-          </div>
+          <label class="field-label" for="notes">
+            Vuoi dirci qualcosa in più?
+          </label>
+          <p class="field-hint field-hint--standalone">Informazioni extra, richieste particolari, o semplicemente un messaggio per noi</p>
+          <textarea
+            id="notes"
+            v-model="form.notes"
+            class="field-textarea"
+            rows="4"
+            placeholder="Scrivi qui…"
+          />
         </div>
       </fieldset>
 
@@ -650,6 +675,12 @@ async function handleSubmit() {
   box-shadow: 0 0 0 3px rgba(141, 166, 212, 0.2);
 }
 
+.field-textarea {
+  resize: vertical;
+  min-height: 7rem;
+  line-height: 1.6;
+}
+
 /* ── Age input ───────────────────────────────────────────────────────────── */
 .field-input--age {
   max-width: 110px;
@@ -835,15 +866,15 @@ async function handleSubmit() {
 /* ── Child list ──────────────────────────────────────────────────────────── */
 .child-list {
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.625rem;
+  flex-direction: column;
+  gap: 0.875rem;
   margin-bottom: 0.75rem;
 }
 
 .child-entry {
   display: flex;
   flex-direction: column;
-  gap: 0.625rem;
+  gap: 1rem;
   padding: 1rem;
   border: 1px solid var(--wedding-border-soft);
   border-radius: 0.5rem;
@@ -864,18 +895,6 @@ async function handleSubmit() {
   letter-spacing: 0.02em;
 }
 
-.child-entry-fields {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 0.75rem;
-  align-items: end;
-}
-
-.child-entry-fields__allergies,
-.guest-fields__allergies {
-  grid-column: 1 / -1;
-}
-
 /* ── Guest list ──────────────────────────────────────────────────────────── */
 .guest-list {
   display: flex;
@@ -885,7 +904,7 @@ async function handleSubmit() {
 
 .guest-row {
   display: flex;
-  align-items: flex-end;
+  align-items: flex-start;
   gap: 0.625rem;
 }
 
@@ -894,6 +913,10 @@ async function handleSubmit() {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 0.75rem;
+}
+
+.guest-fields__dietary {
+  grid-column: 1 / -1;
 }
 
 @media (max-width: 420px) {
@@ -910,7 +933,7 @@ async function handleSubmit() {
   flex-shrink: 0;
   width: 2rem;
   height: 2rem;
-  margin-bottom: 0.125rem;
+  margin-top: 1.875rem;
   border: 1px solid var(--wedding-border);
   border-radius: 50%;
   background-color: transparent;
@@ -919,6 +942,10 @@ async function handleSubmit() {
   line-height: 1;
   cursor: pointer;
   transition: border-color 0.15s ease, color 0.15s ease, background-color 0.15s ease;
+}
+
+.child-entry-header .btn-remove-guest {
+  margin-top: 0;
 }
 
 .btn-remove-guest:hover {
