@@ -5,7 +5,6 @@ const PAYPAL_URL = "#paypal-placeholder";
 const IBAN = "IT26 R036 6901 6008 9464 0322 584";
 const BIC = "REVOITM2";
 const BANK_BENEFICIARY = "Giacomo Andreoli & Marta Zoe Cagliero";
-const BANK_CAUSALE = "Regalo matrimonio Marta & Giacomo";
 </script>
 
 <template>
@@ -94,10 +93,6 @@ const BANK_CAUSALE = "Regalo matrimonio Marta & Giacomo";
               <div class="iban-row">
                 <span class="iban-label">BIC / SWIFT</span>
                 <span class="iban-value iban-mono">{{ BIC }}</span>
-              </div>
-              <div class="iban-row">
-                <span class="iban-label">Causale</span>
-                <span class="iban-value">{{ BANK_CAUSALE }}</span>
               </div>
             </div>
           </div>
