@@ -2,10 +2,9 @@
 // Replace this placeholder with the real URL before launch
 const PAYPAL_URL = "#paypal-placeholder";
 
-// Replace with real IBAN details before launch
-const IBAN = "IT00 A000 0000 0000 0000 0000 000";
-const BANK_BENEFICIARY = "Marta Cognome & Giacomo Cognome";
-const BANK_CAUSALE = "Regalo matrimonio Marta & Giacomo";
+const IBAN = "IT26 R036 6901 6008 9464 0322 584";
+const BIC = "REVOITM2";
+const BANK_BENEFICIARY = "Giacomo Andreoli & Marta Zoe Cagliero";
 </script>
 
 <template>
@@ -36,6 +35,36 @@ const BANK_CAUSALE = "Regalo matrimonio Marta & Giacomo";
 
       <div class="gifts-grid">
 
+        <!-- IBAN -->
+        <div class="gift-card gift-card--primary">
+          <div class="gift-card-icon" aria-hidden="true">
+            <!-- Bank / transfer icon -->
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M4 10v7h3v-7H4zm6 0v7h3v-7h-3zm-8 9h19v-3H2v3zm14-9v7h3v-7h-3zM11.5 1L2 6v2h19V6l-9.5-5z"/>
+            </svg>
+          </div>
+          <div class="gift-card-body">
+            <h3 class="gift-card-title">Bonifico Bancario</h3>
+            <p class="gift-card-desc">
+              Preferite il classico bonifico? Eccovi i dati per il trasferimento.
+            </p>
+            <div class="iban-block" aria-label="Dati bancari">
+              <div class="iban-row">
+                <span class="iban-label">Beneficiario</span>
+                <span class="iban-value">{{ BANK_BENEFICIARY }}</span>
+              </div>
+              <div class="iban-row">
+                <span class="iban-label">IBAN</span>
+                <span class="iban-value iban-mono">{{ IBAN }}</span>
+              </div>
+              <div class="iban-row">
+                <span class="iban-label">BIC / SWIFT</span>
+                <span class="iban-value iban-mono">{{ BIC }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <!-- PayPal -->
         <div class="gift-card gift-card--primary">
           <div class="gift-card-icon" aria-hidden="true">
@@ -63,40 +92,6 @@ const BANK_CAUSALE = "Regalo matrimonio Marta & Giacomo";
           >
             Invia via PayPal
           </a>
-        </div>
-
-        <!-- IBAN -->
-        <div class="gift-card gift-card--primary">
-          <div class="gift-card-icon" aria-hidden="true">
-            <!-- Bank / transfer icon -->
-            <svg viewBox="0 0 24 24" fill="none">
-              <path
-                d="M4 10v7h3v-7H4zm6 0v7h3v-7h-3zm-8 9h19v-3H2v3zM14 10v7h3v-7h-3zm4.5-9l-9.5 5h19L18.5 1z"
-                fill="currentColor"
-              />
-            </svg>
-          </div>
-          <div class="gift-card-body">
-            <h3 class="gift-card-title">Bonifico Bancario</h3>
-            <p class="gift-card-desc">
-              Preferite il classico bonifico? Eccovi i dati per il
-              trasferimento — intestato a entrambi e pronto per la causale.
-            </p>
-            <div class="iban-block" aria-label="Dati bancari">
-              <div class="iban-row">
-                <span class="iban-label">Beneficiario</span>
-                <span class="iban-value">{{ BANK_BENEFICIARY }}</span>
-              </div>
-              <div class="iban-row">
-                <span class="iban-label">IBAN</span>
-                <span class="iban-value iban-mono">{{ IBAN }}</span>
-              </div>
-              <div class="iban-row">
-                <span class="iban-label">Causale</span>
-                <span class="iban-value">{{ BANK_CAUSALE }}</span>
-              </div>
-            </div>
-          </div>
         </div>
 
       </div>
