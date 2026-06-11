@@ -1,26 +1,29 @@
 <script setup lang="ts">
 import WeddingTimeline from "@/components/WeddingTimeline.vue";
 import type { TimelineEvent } from "@/components/WeddingTimeline.vue";
+import bouquetIcon from "@/assets/images/bouquet.png";
+import fioriIcon from "@/assets/images/fiori.png";
+import tortaIcon from "@/assets/images/torta.png";
 
 const events: TimelineEvent[] = [
   {
     time: "11:30",
     title: "Cerimonia civile",
-    description: "Ganci Farm — Via Ganci, 15 — 17015 Celle Ligure",
-    icon: "rings",
+    description: "Via Mezzalunga, 2 — 17015 Celle Ligure",
+    iconImage: bouquetIcon,
   },
   {
     time: "13:30",
     title: "Ricevimento",
     description:
-      "Ganci Farm — Via Ganci, 15 — 17015 Celle Ligure",
-    icon: "fork",
+      "Ganci Farm — Via Ganci, 15 — 17015 Celle Ligure. Pranzo immerso nel verde delle colline liguri.",
+    iconImage: fioriIcon,
   },
   {
     title: "Festeggiamenti",
     description:
-      "Seguiranno torta e festeggiamenti!",
-    icon: "music",
+      "Seguiranno torta e festeggiamenti! Si apre la pista: la giornata continua con musica e tanta voglia di ballare e stare insieme. Anche i bambini si divertiranno — sarà disponibile un servizio di baby-sitting durante tutta la durata dell'evento.",
+    iconImage: tortaIcon,
   },
 ];
 </script>
