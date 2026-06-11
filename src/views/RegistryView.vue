@@ -4,7 +4,7 @@ const PAYPAL_URL = "#paypal-placeholder";
 
 const IBAN = "IT26 R036 6901 6008 9464 0322 584";
 const BIC = "REVOITM2";
-const BANK_BENEFICIARY = "Marta Cognome & Giacomo Cognome";
+const BANK_BENEFICIARY = "Giacomo Andreoli & Marta Zoe Cagliero";
 const BANK_CAUSALE = "Regalo matrimonio Marta & Giacomo";
 </script>
 
