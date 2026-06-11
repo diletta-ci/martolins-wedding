@@ -31,11 +31,11 @@ const events: TimelineEvent[] = [
 <template>
   <!-- ─── Page header ──────────────────────────────────────────────────── -->
   <section class="page-header" aria-label="Programma della giornata">
-    <div class="page-header-inner">
-      <p class="page-eyebrow">La nostra giornata</p>
-      <h1 class="page-title">Programma</h1>
-      <p class="page-subtitle">29 · 8 · 2026</p>
-    </div>
+    <img
+      src="/tit-programma.png"
+      alt="Programma"
+      class="page-title-img"
+    />
   </section>
 
   <!-- ─── Timeline ──────────────────────────────────────────────────────── -->
@@ -49,55 +49,24 @@ const events: TimelineEvent[] = [
 <style scoped>
 /* ── Page header ─────────────────────────────────────────────────────────── */
 .page-header {
-  position: relative;
   background-color: var(--wedding-brand);
   background-image: radial-gradient(
     ellipse 70% 80% at 50% 40%,
     rgba(255, 255, 255, 0.09) 0%,
     transparent 70%
   );
-  padding: 5rem 1.5rem 4rem;
-  text-align: center;
-  overflow: hidden;
-}
-
-.page-header-inner {
-  position: relative;
-  z-index: 1;
+  padding: 3rem 2rem;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 0.5rem;
-  padding-bottom: 2rem;
+  justify-content: center;
 }
 
-.page-eyebrow {
-  font-family: var(--font-heading);
-  font-size: 0.8125rem;
-  font-weight: 500;
-  letter-spacing: 0.26em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.7);
-}
-
-.page-title {
-  font-family: var(--font-display);
-  font-size: clamp(2.75rem, 10vw, 5rem);
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--wedding-white);
-  line-height: 1.05;
-  text-shadow: 0 2px 20px rgba(70, 80, 120, 0.2);
-}
-
-.page-subtitle {
-  font-family: var(--font-heading);
-  font-size: clamp(0.75rem, 2.2vw, 0.9375rem);
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.75);
-  margin-top: 0.25rem;
+.page-title-img {
+  width: 100%;
+  max-width: var(--content-wide);
+  height: auto;
+  filter: invert(1);
+  mix-blend-mode: screen;
 }
 
 /* ── Timeline section ────────────────────────────────────────────────────── */
