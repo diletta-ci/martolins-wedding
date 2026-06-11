@@ -60,14 +60,15 @@ function removeGuest(index: number) {
 
 // ── Children ─────────────────────────────────────────────────────────────────
 interface Child {
+  name: string
   age: string
   dietary: Dietary
 }
 
-const children = ref<Child[]>([{ age: '', dietary: newDietary() }])
+const children = ref<Child[]>([{ name: '', age: '', dietary: newDietary() }])
 
 function addChild() {
-  children.value.push({ age: '', dietary: newDietary() })
+  children.value.push({ name: '', age: '', dietary: newDietary() })
 }
 
 function removeChild(index: number) {
@@ -116,6 +117,7 @@ async function handleSubmit() {
     guest_names: guestNames,
     has_children: form.value.has_children,
     children_count: showChildren.value ? String(children.value.length) : '',
+    children_names: showChildren.value ? children.value.map((c) => c.name).join(', ') : '',
     children_ages: showChildren.value ? children.value.map((c) => c.age).join(', ') : '',
     adult_allergies: adultAllergies,
     child_allergies: childAllergies,
@@ -335,6 +337,17 @@ async function handleSubmit() {
                   >
                     ×
                   </button>
+                </div>
+                <div class="field">
+                  <label class="field-label" :for="`child_name_${index}`">Nome</label>
+                  <input
+                    :id="`child_name_${index}`"
+                    v-model="child.name"
+                    type="text"
+                    class="field-input"
+                    placeholder="Nome del bambino"
+                    required
+                  />
                 </div>
                 <div class="field">
                   <label class="field-label" :for="`child_age_${index}`">Età</label>
