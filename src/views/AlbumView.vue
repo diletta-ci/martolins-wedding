@@ -35,16 +35,15 @@
         </div>
         <h2 class="cta-title">Aggiungi le tue foto all'album</h2>
         <p class="cta-desc">
-          L'album è ospitato su <strong>WedShoots</strong>, un servizio gratuito pensato
-          appositamente per i matrimoni. Puoi accedere direttamente dal browser o scaricare
-          l'app sul tuo smartphone — nessuna registrazione richiesta, basta il codice dell'album.
+          Le foto sono su <strong>Google Drive</strong>. Puoi sfogliare l'album e caricare
+          i tuoi scatti direttamente dal browser, senza installare nulla.
         </p>
         <a
-          href="#wedshoots-placeholder"
+          href="https://drive.google.com/drive/folders/1xBdXuXFddrbAgJ3cLotUmSw14D0wCXz7"
           target="_blank"
           rel="noopener noreferrer"
           class="cta-btn"
-          aria-label="Apri l'album WedShoots"
+          aria-label="Apri l'album su Google Drive"
         >
           <svg class="btn-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
             <path
@@ -57,9 +56,6 @@
           </svg>
           Apri l'album
         </a>
-        <p class="cta-note">
-          Il link sarà attivo il giorno del matrimonio — tornateci il 29 agosto!
-        </p>
       </div>
     </div>
   </section>
@@ -225,12 +221,5 @@
   flex-shrink: 0;
 }
 
-.cta-note {
-  font-family: var(--font-body);
-  font-size: 0.8125rem;
-  color: var(--wedding-ink-faint);
-  font-style: italic;
-  margin-top: 0.25rem;
-}
 
 </style>
