@@ -43,6 +43,21 @@
       </article>
     </div>
   </section>
+
+  <!-- ─── Il posto è grande: illustrated map ───────────────────────────── -->
+  <section class="map-section" aria-label="Mappa della location">
+    <div class="map-section-inner">
+      <p class="map-eyebrow">Orientati</p>
+      <h2 class="map-title">Il posto è grande</h2>
+      <p class="map-body">
+        La cerimonia sta da una parte e il ricevimento dall'altra, ma alla fine
+        è tutto nello stesso posto. Come si vede da questa mappa.
+      </p>
+      <div class="map-placeholder" aria-label="Mappa illustrata in arrivo">
+        <span class="map-placeholder-label">Mappa in arrivo</span>
+      </div>
+    </div>
+  </section>
 </template>
 
 <style scoped>
@@ -97,6 +112,71 @@
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.75);
   margin-top: 0.25rem;
+}
+
+/* ── "Il posto è grande" map section ───────────────────────────────────── */
+.map-section {
+  background-color: var(--wedding-surface-alt);
+  padding: 4.5rem 1.5rem;
+  text-align: center;
+}
+
+.map-section-inner {
+  max-width: 42rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.map-eyebrow {
+  font-family: var(--font-heading);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--wedding-brand-dark);
+}
+
+.map-title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.375rem, 3.5vw, 1.875rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--wedding-ink);
+}
+
+.map-body {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--wedding-ink-muted);
+  max-width: 36rem;
+}
+
+.map-placeholder {
+  margin-top: 1rem;
+  width: 100%;
+  max-width: 36rem;
+  aspect-ratio: 4 / 3;
+  background-color: var(--wedding-brand-pale);
+  border: 2px dashed var(--wedding-border);
+  border-radius: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.map-placeholder-label {
+  font-family: var(--font-heading);
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--wedding-brand);
+  opacity: 0.6;
 }
 
 /* ── Location card ──────────────────────────────────────────────────────── */
