@@ -2,8 +2,8 @@
 // Replace this placeholder with the real URL before launch
 const PAYPAL_URL = "#paypal-placeholder";
 
-// Replace with real IBAN details before launch
-const IBAN = "IT00 A000 0000 0000 0000 0000 000";
+const IBAN = "IT26 R036 6901 6008 9464 0322 584";
+const BIC = "REVOITM2";
 const BANK_BENEFICIARY = "Marta Cognome & Giacomo Cognome";
 const BANK_CAUSALE = "Regalo matrimonio Marta & Giacomo";
 </script>
@@ -90,6 +90,10 @@ const BANK_CAUSALE = "Regalo matrimonio Marta & Giacomo";
               <div class="iban-row">
                 <span class="iban-label">IBAN</span>
                 <span class="iban-value iban-mono">{{ IBAN }}</span>
+              </div>
+              <div class="iban-row">
+                <span class="iban-label">BIC / SWIFT</span>
+                <span class="iban-value iban-mono">{{ BIC }}</span>
               </div>
               <div class="iban-row">
                 <span class="iban-label">Causale</span>
