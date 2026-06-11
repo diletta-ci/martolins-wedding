@@ -53,9 +53,11 @@
         La cerimonia sta da una parte e il ricevimento dall'altra, ma alla fine
         è tutto nello stesso posto. Come si vede da questa mappa.
       </p>
-      <div class="map-placeholder" aria-label="Mappa illustrata in arrivo">
-        <span class="map-placeholder-label">Mappa in arrivo</span>
-      </div>
+      <img
+        src="/mappa-ganci.png"
+        alt="Mappa illustrata di Ganci Farm con cerimonia, ricevimento e parcheggio"
+        class="map-illustrated"
+      />
     </div>
   </section>
 </template>
@@ -122,7 +124,7 @@
 }
 
 .map-section-inner {
-  max-width: 42rem;
+  max-width: var(--content-wide);
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -156,27 +158,11 @@
   max-width: 36rem;
 }
 
-.map-placeholder {
+.map-illustrated {
   margin-top: 1rem;
   width: 100%;
-  max-width: 36rem;
-  aspect-ratio: 4 / 3;
-  background-color: var(--wedding-brand-pale);
-  border: 2px dashed var(--wedding-border);
+  height: auto;
   border-radius: 0.75rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.map-placeholder-label {
-  font-family: var(--font-heading);
-  font-size: 0.875rem;
-  font-weight: 500;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--wedding-brand);
-  opacity: 0.6;
 }
 
 /* ── Location card ──────────────────────────────────────────────────────── */
