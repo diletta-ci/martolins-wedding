@@ -77,8 +77,6 @@
   width: 100%;
   max-width: var(--content-wide);
   height: auto;
-  filter: invert(1);
-  mix-blend-mode: screen;
 }
 
 /* ── "Il posto è grande" map section ───────────────────────────────────── */
