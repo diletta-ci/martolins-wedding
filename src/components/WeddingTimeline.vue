@@ -4,6 +4,7 @@ export interface TimelineEvent {
   title: string;
   description: string;
   icon?: "rings" | "camera" | "fork" | "cocktail" | "music";
+  iconImage?: string;
 }
 
 defineProps<{
@@ -20,9 +21,11 @@ defineProps<{
     >
       <!-- Connector line + dot -->
       <div class="timeline-rail" aria-hidden="true">
-        <div class="timeline-dot">
+        <div class="timeline-dot" :class="{ 'timeline-dot--image': event.iconImage }">
+          <!-- custom image -->
+          <img v-if="event.iconImage" :src="event.iconImage" :alt="event.title" class="timeline-icon-img" />
           <!-- rings -->
-          <svg v-if="event.icon === 'rings'" viewBox="0 0 24 24" fill="none" class="timeline-icon">
+          <svg v-else-if="event.icon === 'rings'" viewBox="0 0 24 24" fill="none" class="timeline-icon">
             <path d="M7 8a4 4 0 1 0 0 8A4 4 0 0 0 7 8zm10 0a4 4 0 1 0 0 8 4 4 0 0 0 0-8zM11 12a4.002 4.002 0 0 0 2 0" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
           </svg>
           <!-- camera -->
@@ -44,8 +47,8 @@ defineProps<{
             <circle cx="6" cy="18" r="3" stroke="currentColor" stroke-width="1.5"/>
             <circle cx="18" cy="16" r="3" stroke="currentColor" stroke-width="1.5"/>
           </svg>
-          <!-- default star -->
-          <svg v-else viewBox="0 0 24 24" fill="currentColor" class="timeline-icon">
+          <!-- default: nothing -->
+          <svg v-else-if="!event.iconImage" viewBox="0 0 24 24" fill="currentColor" class="timeline-icon">
             <path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/>
           </svg>
         </div>
@@ -73,7 +76,7 @@ defineProps<{
 
 .timeline-item {
   display: grid;
-  grid-template-columns: 3rem 1fr;
+  grid-template-columns: auto 1fr;
   gap: 0 1.75rem;
 }
 
@@ -108,6 +111,25 @@ defineProps<{
 .timeline-icon {
   width: 1.25rem;
   height: 1.25rem;
+}
+
+.timeline-dot--image {
+  background: none;
+  border-color: transparent;
+  width: 6rem;
+  height: 6rem;
+}
+
+.timeline-dot--image:hover,
+.timeline-item:hover .timeline-dot--image {
+  background: none;
+  border-color: transparent;
+}
+
+.timeline-icon-img {
+  width: 6rem;
+  height: 6rem;
+  object-fit: contain;
 }
 
 .timeline-line {

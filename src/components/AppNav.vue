@@ -23,7 +23,7 @@ function closeMenu() {
     <div class="nav-inner">
       <!-- Wordmark -->
       <RouterLink to="/" class="nav-wordmark" @click="closeMenu">
-        M &amp; G
+        <img src="@/assets/images/iniziali.png" alt="M & G" class="nav-wordmark-img" />
       </RouterLink>
 
       <!-- Desktop links -->
@@ -95,18 +95,19 @@ function closeMenu() {
 
 /* ── Wordmark ───────────────────────────────────────────────────────────── */
 .nav-wordmark {
-  font-family: var(--font-display);
-  font-size: 1.75rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  color: var(--wedding-brand);
-  line-height: 1;
-  letter-spacing: 0.08em;
-  transition: color 0.2s;
+  display: flex;
+  align-items: center;
+  opacity: 1;
+  transition: opacity 0.2s;
 }
 
 .nav-wordmark:hover {
-  color: var(--wedding-brand-dark);
+  opacity: 0.75;
+}
+
+.nav-wordmark-img {
+  height: 2.75rem;
+  width: auto;
 }
 
 /* ── Desktop links ──────────────────────────────────────────────────────── */
