@@ -10,21 +10,6 @@
     </div>
   </section>
 
-  <!-- ─── Il posto è grande: illustrated map ───────────────────────────── -->
-  <section class="map-section" aria-label="Mappa della location">
-    <div class="map-section-inner">
-      <p class="map-eyebrow">Orientati</p>
-      <h2 class="map-title">Il posto è grande</h2>
-      <p class="map-body">
-        La cerimonia sta da una parte e il ricevimento dall'altra, ma alla fine
-        è tutto nello stesso posto. Come si vede da questa mappa.
-      </p>
-      <div class="map-placeholder" aria-label="Mappa illustrata in arrivo">
-        <span class="map-placeholder-label">Mappa in arrivo</span>
-      </div>
-    </div>
-  </section>
-
   <!-- ─── Location: Ganci Farm ─────────────────────────────────────────── -->
   <section class="locations-section" aria-label="La location">
     <div class="locations-inner locations-inner--single">
@@ -56,6 +41,21 @@
           </a>
         </div>
       </article>
+    </div>
+  </section>
+
+  <!-- ─── Il posto è grande: illustrated map ───────────────────────────── -->
+  <section class="map-section" aria-label="Mappa della location">
+    <div class="map-section-inner">
+      <p class="map-eyebrow">Orientati</p>
+      <h2 class="map-title">Il posto è grande</h2>
+      <p class="map-body">
+        La cerimonia sta da una parte e il ricevimento dall'altra, ma alla fine
+        è tutto nello stesso posto. Come si vede da questa mappa.
+      </p>
+      <div class="map-placeholder" aria-label="Mappa illustrata in arrivo">
+        <span class="map-placeholder-label">Mappa in arrivo</span>
+      </div>
     </div>
   </section>
 </template>
