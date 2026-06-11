@@ -114,8 +114,6 @@ const BANK_BENEFICIARY = "Giacomo Andreoli & Marta Zoe Cagliero";
   width: 100%;
   max-width: var(--content-wide);
   height: auto;
-  filter: invert(1);
-  mix-blend-mode: screen;
 }
 
 /* ── Intro ──────────────────────────────────────────────────────────────── */

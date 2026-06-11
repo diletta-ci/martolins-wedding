@@ -469,8 +469,6 @@ async function handleSubmit() {
   width: 100%;
   max-width: var(--content-wide);
   height: auto;
-  filter: invert(1);
-  mix-blend-mode: screen;
 }
 
 /* ── Deadline note ───────────────────────────────────────────────────────── */
