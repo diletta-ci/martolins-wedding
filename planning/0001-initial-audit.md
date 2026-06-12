@@ -28,7 +28,8 @@ These can break the only interactive surface on the site (the RSVP form) or send
 
 ### 1.1 Placeholder URLs in production code
 Two `#…-placeholder` hrefs will ship to prod if forgotten:
-- [RegistryView.vue:3](src/views/RegistryView.vue) — `PAYPAL_URL`, `IBAN`, `BANK_BENEFICIARY`, `BANK_CAUSALE` all dummy values.
+- ~~[RegistryView.vue:3](src/views/RegistryView.vue) — `PAYPAL_URL` dummy value.~~ ✅ **Done 2026-06-12** — updated to `https://paypal.me/MartaZoeC`
+- [RegistryView.vue:3](src/views/RegistryView.vue) — `IBAN`, `BANK_BENEFICIARY`, `BANK_CAUSALE` still dummy values.
 - [AlbumView.vue:43](src/views/AlbumView.vue) — `#wedshoots-placeholder` href.
 
 **Action:**
