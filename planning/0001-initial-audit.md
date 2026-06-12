@@ -37,13 +37,32 @@ Two `#…-placeholder` hrefs will ship to prod if forgotten:
 - Add a runtime guard: in production builds, throw / log to console if any value starts with `#` or contains `placeholder`. Cheap and prevents an embarrassing launch bug.
 - Add an `oxlint` / ESLint rule (or just a `grep` check in CI) that fails the build if `placeholder` strings remain.
 
-### 1.2 RSVP — end-to-end Netlify submission test
+### 1.2 Page header — layout shift on title PNG load
+Every page uses the same pattern: a `<section class="page-header">` with `<img class="page-title-img">` that has `width: 100%; height: auto` but no explicit size — the browser doesn't know the height until the PNG arrives, causing a visible layout jump (CLS).
+
+**Fix:** add `aspect-ratio` to each view's `.page-title-img` rule (computed from actual PNG dimensions), plus a neutral `background-color` on `.page-header` as a loading skeleton. No JS needed.
+
+Ratios per view (width ÷ height of the source PNG):
+| View | File | Aspect ratio |
+|------|------|-------------|
+| RegistryView | tit-regalo.png (2016×1000) | `aspect-ratio: 2016 / 1000` |
+| RsvpView | tit-rsvp.png (960×473) | `aspect-ratio: 960 / 473` |
+| AlbumView | tit-foto.png (1287×681) | `aspect-ratio: 1287 / 681` |
+| ScheduleView | tit-programma.png (2910×886) | `aspect-ratio: 2910 / 886` |
+| LocationView | tit-location.png (2568×641) | `aspect-ratio: 2568 / 641` |
+
+**Action:**
+- In each view, add `aspect-ratio: W / H` to `.page-title-img`.
+- Add a subtle skeleton background (e.g. `background: var(--wedding-surface)`) to `.page-header` so the reserved space isn't a blank white gap.
+- Optionally extract into a shared `PageHeader` component to avoid the per-view duplication.
+
+### 1.3 RSVP — end-to-end Netlify submission test
 The current PLANNING note already calls this out. Concretely:
 - Confirm the static form in [index.html:21-37](index.html) declares **exactly** the same input names that [RsvpView.vue:93-111](src/views/RsvpView.vue) submits. They currently match — add a test that locks this in (see §7.1).
 - Deploy preview → submit → verify the entry appears in Netlify Forms dashboard. Do this on a feature branch before merging.
 - Test the spam honeypot: filling `bot-field` should cause Netlify to drop the submission silently.
 
-### 1.3 RSVP — validation feedback
+### 1.4 RSVP — validation feedback
 Today, if a required field is empty, the browser shows the native tooltip and that's it. Issues:
 - The `has_children` radio group has `required` on each option; native validation works but the message is generic.
 - No client-side validation for malformed numeric ages (e.g. negative, > 17, non-integer).
@@ -54,7 +73,7 @@ Today, if a required field is empty, the browser shows the native tooltip and th
 - Renders inline error text per field on submit attempt (no native popups — `novalidate` is already set, good).
 - Scrolls to the first error.
 
-### 1.4 RSVP — submit state machine
+### 1.5 RSVP — submit state machine
 Today: `submitting`, `submitted`, `submitError` are three booleans/strings that can disagree (e.g. submit fails then succeeds — `submitError` still has stale text).
 
 **Action:** collapse into a discriminated union:
@@ -67,12 +86,12 @@ type SubmitState =
 ```
 Smaller surface area, impossible to render two states at once.
 
-### 1.5 RSVP — stable `v-for` keys
+### 1.6 RSVP — stable `v-for` keys
 [RsvpView.vue:189](src/views/RsvpView.vue) and [RsvpView.vue:272](src/views/RsvpView.vue) use the array index as `:key`. Removing a middle row makes Vue re-bind `v-model` to the wrong input, which has caused real RSVP-form bugs in other Vue apps.
 
 **Action:** give each guest / child a stable `id` (e.g. `crypto.randomUUID()` on creation) and key by that.
 
-### 1.6 Netlify security headers
+### 1.7 Netlify security headers
 There is no `netlify.toml` or `public/_headers`. The site embeds Google Maps iframes, so we want at minimum:
 - `Content-Security-Policy` allowing `https://www.google.com` for frame-src, fonts.gstatic.com / fonts.googleapis.com for fonts.
 - `X-Frame-Options: SAMEORIGIN`
