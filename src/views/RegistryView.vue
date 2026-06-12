@@ -1,6 +1,5 @@
 <script setup lang="ts">
-// Replace this placeholder with the real URL before launch
-const PAYPAL_URL = "#paypal-placeholder";
+const PAYPAL_URL = "https://paypal.me/MartaZoeC";
 
 const IBAN = "IT26 R036 6901 6008 9464 0322 584";
 const BIC = "REVOITM2";
