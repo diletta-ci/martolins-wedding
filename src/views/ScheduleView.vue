@@ -63,9 +63,9 @@ const events: TimelineEvent[] = [
 }
 
 .page-title-img {
-  width: 50%;
-  max-width: var(--content-wide);
-  height: auto;
+  height: clamp(3rem, 12.5vw, 9.5rem);
+  width: auto;
+  max-width: 100%;
 }
 
 /* ── Timeline section ────────────────────────────────────────────────────── */
