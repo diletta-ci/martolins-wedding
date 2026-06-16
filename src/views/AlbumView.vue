@@ -8,10 +8,9 @@
   <section class="intro-section">
     <div class="intro-inner">
       <p class="intro-text">
-        Ogni sguardo, ogni abbraccio, ogni momento di gioia — visti attraverso i vostri occhi.
         Qui trovi un modo semplice per condividere con noi tutte le foto e i video che hai fatto
-        durante il grande giorno. Usa il link qui sotto per accedere all'album e carica i tuoi
-        scatti: sarà il nostro modo di rivivere questa giornata insieme, ancora e ancora.
+        durante l'evento. Usa <a href="https://drive.google.com/drive/folders/1xBdXuXFddrbAgJ3cLotUmSw14D0wCXz7" target="_blank" rel="noopener noreferrer" class="intro-link">il link qui sotto</a> per accedere all'album e carica i tuoi scatti:
+        sarà il nostro modo di rivivere questa giornata insieme.
       </p>
     </div>
   </section>
@@ -74,9 +73,9 @@
 }
 
 .page-title-img {
-  width: 100%;
-  max-width: var(--content-wide);
-  height: auto;
+  height: clamp(3rem, 12.5vw, 9.5rem);
+  width: auto;
+  max-width: 100%;
 }
 
 /* ── Intro ──────────────────────────────────────────────────────────────── */
@@ -96,6 +95,11 @@
   font-size: clamp(1.0625rem, 2.5vw, 1.25rem);
   line-height: 1.8;
   color: var(--wedding-ink-muted);
+}
+
+.intro-link {
+  color: var(--wedding-brand-dark);
+  text-decoration: underline;
 }
 
 /* ── CTA section ────────────────────────────────────────────────────────── */

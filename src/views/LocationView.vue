@@ -6,6 +6,30 @@
     <img src="/tit-location.png" alt="Location" class="page-title-img" />
   </section>
 
+  <!-- ─── Il posto è grande: illustrated map ───────────────────────────── -->
+  <section class="map-section" aria-label="Mappa della location">
+    <div class="map-section-inner">
+      <h2 class="map-title">I Ganci</h2>
+      <p class="map-body">
+        La cerimonia sta da una parte e il ricevimento dall'altra, ma alla fine
+        è tutto nello stesso posto. Come si vede da questa mappa.
+      </p>
+      <p class="map-body">
+        Il parcheggio è in via Ganci, 15, di fianco a Ganci Farm, la location del ricevimento.
+        Parcheggiate lì la vostra auto e venite a piedi in via Ganci 20, dove si terrà la cerimonia.
+        Troverete le indicazioni sul posto.
+      </p>
+      <p class="map-body map-body--note">
+        Sconsigliamo i tacchi a spillo, la cerimonia si svolge sul prato.
+      </p>
+      <img
+        src="/mappa-ganci.png"
+        alt="Mappa illustrata di Ganci Farm con cerimonia, ricevimento e parcheggio"
+        class="map-illustrated"
+      />
+    </div>
+  </section>
+
   <!-- ─── Location: Ganci Farm ─────────────────────────────────────────── -->
   <section class="locations-section" aria-label="La location">
     <div class="locations-inner locations-inner--single">
@@ -20,7 +44,7 @@
           />
         </div>
         <div class="location-info">
-          <p class="location-eyebrow">Cerimonia e ricevimento</p>
+          <p class="location-eyebrow">Vai al parcheggio</p>
           <h2 class="location-title">Ganci Farm</h2>
           <p class="location-address">
             Via Ganci, 15<br />
@@ -37,23 +61,6 @@
           </a>
         </div>
       </article>
-    </div>
-  </section>
-
-  <!-- ─── Il posto è grande: illustrated map ───────────────────────────── -->
-  <section class="map-section" aria-label="Mappa della location">
-    <div class="map-section-inner">
-      <p class="map-eyebrow">Orientati</p>
-      <h2 class="map-title">Il posto è grande</h2>
-      <p class="map-body">
-        La cerimonia sta da una parte e il ricevimento dall'altra, ma alla fine
-        è tutto nello stesso posto. Come si vede da questa mappa.
-      </p>
-      <img
-        src="/mappa-ganci.png"
-        alt="Mappa illustrata di Ganci Farm con cerimonia, ricevimento e parcheggio"
-        class="map-illustrated"
-      />
     </div>
   </section>
 </template>
@@ -74,9 +81,9 @@
 }
 
 .page-title-img {
-  width: 100%;
-  max-width: var(--content-wide);
-  height: auto;
+  height: clamp(3rem, 12.5vw, 9.5rem);
+  width: auto;
+  max-width: 100%;
 }
 
 /* ── "Il posto è grande" map section ───────────────────────────────────── */
@@ -119,6 +126,10 @@
   line-height: 1.75;
   color: var(--wedding-ink-muted);
   max-width: 36rem;
+}
+
+.map-body--note {
+  font-style: italic;
 }
 
 .map-illustrated {

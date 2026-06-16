@@ -2,27 +2,28 @@
 import WeddingTimeline from "@/components/WeddingTimeline.vue";
 import type { TimelineEvent } from "@/components/WeddingTimeline.vue";
 import bouquetIcon from "@/assets/images/bouquet.png";
-import fioriIcon from "@/assets/images/fiori.png";
+import pranzoIcon from "@/assets/images/pranzo.png";
 import tortaIcon from "@/assets/images/torta.png";
 
 const events: TimelineEvent[] = [
   {
     time: "11:30",
     title: "Cerimonia civile",
-    description: "Via Mezzalunga, 2 — 17015 Celle Ligure",
+    description: "Masseria Ganci – Via Ganci, 20 – 17015 Celle Ligure",
     iconImage: bouquetIcon,
   },
   {
     time: "13:30",
     title: "Ricevimento",
     description:
-      "Ganci Farm — Via Ganci, 15 — 17015 Celle Ligure. Pranzo immerso nel verde delle colline liguri.",
-    iconImage: fioriIcon,
+      "Ganci Farm — Via Ganci, 15 — 17015 Celle Ligure.",
+    iconImage: pranzoIcon,
   },
   {
     title: "Festeggiamenti",
     description:
-      "Seguiranno torta e festeggiamenti! Si apre la pista: la giornata continua con musica e tanta voglia di ballare e stare insieme. Anche i bambini si divertiranno — sarà disponibile un servizio di baby-sitting durante tutta la durata dell'evento.",
+      "Seguiranno torta e musica!\nPer tutto il ricevimento sarà disponibile un servizio di baby-sitting.",
+
     iconImage: tortaIcon,
   },
 ];
@@ -62,9 +63,9 @@ const events: TimelineEvent[] = [
 }
 
 .page-title-img {
-  width: 100%;
-  max-width: var(--content-wide);
-  height: auto;
+  height: clamp(3rem, 12.5vw, 9.5rem);
+  width: auto;
+  max-width: 100%;
 }
 
 /* ── Timeline section ────────────────────────────────────────────────────── */

@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import valigieImg from "@/assets/images/valigie.png";
+
 const PAYPAL_URL = "https://paypal.me/MartaZoeC";
 
 const IBAN = "IT26 R036 6901 6008 9464 0322 584";
@@ -15,11 +17,15 @@ const BANK_BENEFICIARY = "Giacomo Andreoli & Marta Zoe Cagliero";
   <!-- ─── Intro ────────────────────────────────────────────────────────── -->
   <section class="intro-section">
     <div class="intro-inner">
-      <p class="intro-text">
-        La vostra presenza è il regalo più grande che potessimo desiderare.
-        In caso voleste contribuire al nostro viaggio di nozze, ecco qualche
-        modo per farlo — con tutto il nostro affetto e gratitudine.
-      </p>
+      <img :src="valigieImg" alt="Valigie" class="intro-image" />
+      <div class="intro-texts">
+        <p class="intro-text">
+          Non è necessario che ci facciate dei regali, siamo già felicissimi della vostra presenza!
+        </p>
+        <p class="intro-text">
+          In caso voleste contribuire al nostro <strong>viaggio di nozze</strong>, potete farlo qui:
+        </p>
+      </div>
     </div>
   </section>
 
@@ -41,7 +47,7 @@ const BANK_BENEFICIARY = "Giacomo Andreoli & Marta Zoe Cagliero";
           <div class="gift-card-body">
             <h3 class="gift-card-title">Bonifico Bancario</h3>
             <p class="gift-card-desc">
-              Preferite il classico bonifico? Eccovi i dati per il trasferimento.
+              <em>Esempio causale: Regalo Matrimonio - Il vostro nome</em>
             </p>
             <div class="iban-block" aria-label="Dati bancari">
               <div class="iban-row">
@@ -74,8 +80,7 @@ const BANK_BENEFICIARY = "Giacomo Andreoli & Marta Zoe Cagliero";
           <div class="gift-card-body">
             <h3 class="gift-card-title">Contributo PayPal</h3>
             <p class="gift-card-desc">
-              Il modo più semplice e veloce. Basta un clic per inviarci
-              un pensiero direttamente online.
+              In alternativa al bonifico potete usare Paypal attraverso il link qui sotto
             </p>
           </div>
           <a
@@ -110,9 +115,9 @@ const BANK_BENEFICIARY = "Giacomo Andreoli & Marta Zoe Cagliero";
 }
 
 .page-title-img {
-  width: 100%;
-  max-width: var(--content-wide);
-  height: auto;
+  height: clamp(3rem, 12.5vw, 9.5rem);
+  width: auto;
+  max-width: 100%;
 }
 
 /* ── Intro ──────────────────────────────────────────────────────────────── */
@@ -122,9 +127,23 @@ const BANK_BENEFICIARY = "Giacomo Andreoli & Marta Zoe Cagliero";
 }
 
 .intro-inner {
-  max-width: 42rem;
+  max-width: 48rem;
   margin: 0 auto;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.intro-image {
+  width: 140px;
+  flex-shrink: 0;
+  height: auto;
+}
+
+.intro-texts {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
 }
 
 .intro-text {
