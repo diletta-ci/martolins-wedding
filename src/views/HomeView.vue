@@ -1,7 +1,11 @@
 <script setup lang="ts">
+import { onMounted, onUnmounted } from "vue";
 import illustrationUrl from "@/assets/images/illustration-martaegiacomo.png";
 import namesUrl from "@/assets/images/names-calligraphy.png";
 import dateUrl from "@/assets/images/date-calligraphy.png";
+
+onMounted(() => document.documentElement.classList.add("page-home"));
+onUnmounted(() => document.documentElement.classList.remove("page-home"));
 </script>
 
 <template>
@@ -44,9 +48,7 @@ import dateUrl from "@/assets/images/date-calligraphy.png";
 /* ── Hero ──────────────────────────────────────────────────────────────── */
 .hero {
   position: relative;
-  /* Subtract the sticky nav so hero + nav = exactly one viewport, no scroll */
-  height: calc(100vh - var(--nav-h));
-  height: calc(100dvh - var(--nav-h));
+  height: 100dvh;
   width: 100%;
   background-color: var(--wedding-brand);
   display: flex;
@@ -67,8 +69,8 @@ import dateUrl from "@/assets/images/date-calligraphy.png";
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.5rem;
-  padding: 1.5rem 0;
+  gap: 3rem;
+  padding: calc(var(--nav-h) + 2.5rem) 2rem 3rem;
   margin: 0;
   text-align: center;
   width: 100%;
@@ -77,18 +79,17 @@ import dateUrl from "@/assets/images/date-calligraphy.png";
 }
 
 .hero-names {
-  width: min(38vw, 24rem);
+  width: min(24vw, 14rem);
   height: auto;
-  /* Tint the black calligraphy white for contrast on periwinkle */
   filter: brightness(0) invert(1);
   user-select: none;
 }
 
 .hero-illustration {
-  width: 100%;
-  flex: 1 1 auto;
-  min-height: 30dvh;
-  max-height: 65dvh;
+  width: 80%;
+  flex: 1 1 0;
+  min-height: 10dvh;
+  max-height: 45dvh;
   height: auto;
   object-fit: contain;
   filter: drop-shadow(0 8px 24px rgba(40, 50, 90, 0.18));
@@ -96,7 +97,7 @@ import dateUrl from "@/assets/images/date-calligraphy.png";
 }
 
 .hero-date {
-  width: min(28vw, 13rem);
+  width: min(18vw, 8rem);
   height: auto;
   filter: brightness(0) invert(1);
   opacity: 0.95;
@@ -105,12 +106,30 @@ import dateUrl from "@/assets/images/date-calligraphy.png";
 
 .hero-tagline {
   font-family: var(--font-heading);
-  font-size: clamp(0.95rem, 2.6vw, 1.25rem);
+  font-size: clamp(0.75rem, 1.8vw, 1rem);
   font-weight: 700;
   letter-spacing: 0.32em;
   text-transform: uppercase;
   color: var(--wedding-white);
-  margin-top: 0.5rem;
+  margin-top: 0.25rem;
 }
 
+@media (max-width: 640px) {
+  .hero-content {
+    gap: 1.25rem;
+  }
+
+  .hero-names {
+    width: min(70vw, 14rem);
+  }
+
+  .hero-illustration {
+    max-height: 30dvh;
+    width: 90%;
+  }
+
+  .hero-date {
+    width: min(45vw, 8rem);
+  }
+}
 </style>
