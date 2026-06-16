@@ -43,6 +43,17 @@ html {
   scroll-behavior: smooth;
 }
 
+html.page-home,
+html.page-home body {
+  overflow: hidden;
+  height: 100%;
+}
+
+html.page-home .app-nav {
+  position: fixed;
+  width: 100%;
+}
+
 body {
   min-height: 100vh;
   background-color: var(--wedding-surface);
