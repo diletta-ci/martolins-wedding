@@ -466,7 +466,7 @@ async function handleSubmit() {
 }
 
 .page-title-img {
-  width: 100%;
+  width: 30%;
   max-width: var(--content-wide);
   height: auto;
 }

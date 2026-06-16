@@ -176,6 +176,7 @@ defineProps<{
   line-height: 1.75;
   color: var(--wedding-ink-muted);
   max-width: 52ch;
+  white-space: pre-line;
 }
 
 /* ── Responsive ─────────────────────────────────────────────────────────── */
