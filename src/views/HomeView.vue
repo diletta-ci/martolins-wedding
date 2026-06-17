@@ -120,7 +120,7 @@ onUnmounted(() => document.documentElement.classList.remove("page-home"));
   }
 
   .hero-illustration {
-    max-height: 30dvh;
+    max-height: 45dvh;
     width: 90%;
   }
 
