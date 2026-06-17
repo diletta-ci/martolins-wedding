@@ -11,8 +11,7 @@
     <div class="map-section-inner">
       <h2 class="map-title">I Ganci</h2>
       <p class="map-body">
-        La cerimonia sta da una parte e il ricevimento dall'altra, ma alla fine
-        è tutto nello stesso posto. Come si vede da questa mappa.
+        La cerimonia e il ricevimento si svolgeranno nello stesso posto, da una parte e dall'altra della strada. Come si vede da questa mappa.
       </p>
       <p class="map-body">
         Il parcheggio è in via Ganci, 15, di fianco a Ganci Farm, la location del ricevimento.
