@@ -48,7 +48,7 @@ onUnmounted(() => document.documentElement.classList.remove("page-home"));
 /* ── Hero ──────────────────────────────────────────────────────────────── */
 .hero {
   position: relative;
-  height: 100dvh;
+  height: 100vh;
   width: 100%;
   background-color: var(--wedding-brand);
   display: flex;
@@ -69,17 +69,17 @@ onUnmounted(() => document.documentElement.classList.remove("page-home"));
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 3rem;
-  padding: calc(var(--nav-h) + 2.5rem) 2rem 3rem;
+  gap: 0;
+  padding: 0 0 3rem;
   margin: 0;
   text-align: center;
   width: 100%;
   height: 100%;
-  justify-content: center;
+  justify-content: space-evenly;
 }
 
 .hero-names {
-  width: min(24vw, 14rem);
+  width: max(min(24vw, 14rem), 20rem);
   height: auto;
   filter: brightness(0) invert(1);
   user-select: none;
@@ -89,7 +89,7 @@ onUnmounted(() => document.documentElement.classList.remove("page-home"));
   width: 80%;
   flex: 1 1 0;
   min-height: 10dvh;
-  max-height: 45dvh;
+  max-height: 50dvh;
   height: auto;
   object-fit: contain;
   filter: drop-shadow(0 8px 24px rgba(40, 50, 90, 0.18));
@@ -115,16 +115,12 @@ onUnmounted(() => document.documentElement.classList.remove("page-home"));
 }
 
 @media (max-width: 640px) {
-  .hero-content {
-    gap: 1.25rem;
-  }
-
   .hero-names {
     width: min(70vw, 14rem);
   }
 
   .hero-illustration {
-    max-height: 30dvh;
+    max-height: 45dvh;
     width: 90%;
   }
 
