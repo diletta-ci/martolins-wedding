@@ -38,7 +38,7 @@ import pranzoIcon from "@/assets/images/pranzo.png";
     transparent 70%
   );
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   padding: 3rem 1.5rem;
   text-align: center;
@@ -100,5 +100,11 @@ import pranzoIcon from "@/assets/images/pranzo.png";
   width: 1.75rem;
   height: 1.75rem;
   object-fit: contain;
+}
+
+@media (max-width: 480px) {
+  .not-found-actions {
+    grid-template-columns: 1fr;
+  }
 }
 </style>
