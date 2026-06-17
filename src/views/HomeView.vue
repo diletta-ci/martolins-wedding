@@ -69,13 +69,13 @@ onUnmounted(() => document.documentElement.classList.remove("page-home"));
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
-  padding: 2rem 0;
+  gap: 0;
+  padding: 0 0 3rem;
   margin: 0;
   text-align: center;
   width: 100%;
   height: 100%;
-  justify-content: flex-start;
+  justify-content: space-evenly;
 }
 
 .hero-names {
@@ -89,7 +89,7 @@ onUnmounted(() => document.documentElement.classList.remove("page-home"));
   width: 80%;
   flex: 1 1 0;
   min-height: 10dvh;
-  max-height: 45dvh;
+  max-height: 50dvh;
   height: auto;
   object-fit: contain;
   filter: drop-shadow(0 8px 24px rgba(40, 50, 90, 0.18));

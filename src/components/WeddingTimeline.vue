@@ -182,13 +182,23 @@ defineProps<{
 /* ── Responsive ─────────────────────────────────────────────────────────── */
 @media (max-width: 480px) {
   .timeline-item {
-    grid-template-columns: 2.5rem 1fr;
+    grid-template-columns: auto 1fr;
     gap: 0 1.25rem;
   }
 
   .timeline-dot {
     width: 2.5rem;
     height: 2.5rem;
+  }
+
+  .timeline-dot--image {
+    width: 5rem;
+    height: 5rem;
+  }
+
+  .timeline-icon-img {
+    width: 5rem;
+    height: 5rem;
   }
 }
 </style>
