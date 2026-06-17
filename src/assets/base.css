@@ -49,10 +49,6 @@ html.page-home body {
   height: 100%;
 }
 
-html.page-home .app-nav {
-  position: fixed;
-  width: 100%;
-}
 
 body {
   min-height: 100vh;
