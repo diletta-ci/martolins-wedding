@@ -89,18 +89,24 @@ const submitted = ref(false)
 const submitError = ref('')
 
 // ── Validation ───────────────────────────────────────────────────────────────
+function isDietaryFilled(d: Dietary): boolean {
+  return d.none || d.celiac || d.allergies || d.vegetarian || d.vegan
+}
+
 const errors = ref({
   guest0Nome: '',
   guest0Cognome: '',
+  guestDietary: [] as string[],
   hasChildren: '',
-  children: [] as Array<{ name: string; age: string }>,
+  children: [] as Array<{ name: string; age: string; dietary: string }>,
 })
 
 function validateForm(): boolean {
   errors.value.guest0Nome = ''
   errors.value.guest0Cognome = ''
   errors.value.hasChildren = ''
-  errors.value.children = children.value.map(() => ({ name: '', age: '' }))
+  errors.value.guestDietary = guests.value.map(() => '')
+  errors.value.children = children.value.map(() => ({ name: '', age: '', dietary: '' }))
 
   let valid = true
   const g0 = guests.value[0]
@@ -112,6 +118,12 @@ function validateForm(): boolean {
     errors.value.guest0Cognome = 'Il cognome è obbligatorio'
     valid = false
   }
+  guests.value.forEach((guest, i) => {
+    if (!isDietaryFilled(guest.dietary)) {
+      errors.value.guestDietary[i] = 'Seleziona almeno un\'opzione'
+      valid = false
+    }
+  })
   if (form.value.has_children === '') {
     errors.value.hasChildren = "Seleziona un'opzione"
     valid = false
@@ -124,6 +136,10 @@ function validateForm(): boolean {
       }
       if (!child.age.trim()) {
         errors.value.children[i]!.age = "L'età è obbligatoria"
+        valid = false
+      }
+      if (!isDietaryFilled(child.dietary)) {
+        errors.value.children[i]!.dietary = "Seleziona almeno un'opzione"
         valid = false
       }
     })
@@ -275,7 +291,7 @@ async function handleSubmit() {
                 <p v-if="index === 0 && errors.guest0Cognome" class="field-error" role="alert">{{ errors.guest0Cognome }}</p>
               </div>
               <div class="field guest-fields__dietary">
-                <p class="field-label">Esigenze alimentari — Adulto {{ index + 1 }}</p>
+                <p class="field-label">Esigenze alimentari — Adulto {{ index + 1 }} <span class="field-required" aria-hidden="true">*</span></p>
                 <div class="checkbox-group">
                   <label class="checkbox-option checkbox-option--none">
                     <input type="checkbox" v-model="guest.dietary.none" @change="toggleDietaryNone(guest.dietary)" />
@@ -316,6 +332,7 @@ async function handleSubmit() {
                     <span class="checkbox-text">Dieta vegana</span>
                   </label>
                 </div>
+                <p v-if="errors.guestDietary[index]" class="field-error" role="alert">{{ errors.guestDietary[index] }}</p>
               </div>
             </div>
             <button
@@ -412,7 +429,7 @@ async function handleSubmit() {
                   <p v-if="errors.children[index]?.age" class="field-error" role="alert">{{ errors.children[index]?.age }}</p>
                 </div>
                 <div class="field">
-                  <p class="field-label">Esigenze alimentari</p>
+                  <p class="field-label">Esigenze alimentari <span class="field-required" aria-hidden="true">*</span></p>
                   <div class="checkbox-group">
                     <label class="checkbox-option checkbox-option--none">
                       <input type="checkbox" v-model="child.dietary.none" @change="toggleDietaryNone(child.dietary)" />
@@ -453,6 +470,7 @@ async function handleSubmit() {
                       <span class="checkbox-text">Dieta vegana</span>
                     </label>
                   </div>
+                  <p v-if="errors.children[index]?.dietary" class="field-error" role="alert">{{ errors.children[index]?.dietary }}</p>
                 </div>
               </div>
             </TransitionGroup>
