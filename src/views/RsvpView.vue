@@ -1,52 +1,19 @@
 <script setup lang="ts">
 import PageHeader from '@/components/PageHeader.vue'
 import { ref, computed } from 'vue'
-
-// ── Dietary helpers ───────────────────────────────────────────────────────────
-interface Dietary {
-  none: boolean
-  celiac: boolean
-  allergies: boolean
-  allergies_detail: string
-  vegetarian: boolean
-  vegan: boolean
-}
-
-function newDietary(): Dietary {
-  return { none: false, celiac: false, allergies: false, allergies_detail: '', vegetarian: false, vegan: false }
-}
-
-function toggleDietaryNone(d: Dietary) {
-  if (d.none) {
-    d.celiac = false
-    d.allergies = false
-    d.allergies_detail = ''
-    d.vegetarian = false
-    d.vegan = false
-  }
-}
-
-function clearDietaryNone(d: Dietary) {
-  if (d.celiac || d.allergies || d.vegetarian || d.vegan) d.none = false
-}
-
-function serializeDietary(d: Dietary): string {
-  if (d.none) return 'nessuna restrizione'
-  const parts: string[] = []
-  if (d.celiac) parts.push('celiachia')
-  if (d.allergies) parts.push(d.allergies_detail ? `allergie alimentari (${d.allergies_detail})` : 'allergie alimentari')
-  if (d.vegetarian) parts.push('vegetariano/a')
-  if (d.vegan) parts.push('vegano/a')
-  return parts.length ? parts.join(', ') : 'nessuna restrizione'
-}
+import {
+  type Dietary,
+  type Guest,
+  type Child,
+  type RsvpForm,
+  newDietary,
+  toggleDietaryNone,
+  clearDietaryNone,
+  isDietaryFilled,
+  buildRsvpPayload,
+} from '@/utils/rsvp'
 
 // ── Guest list ───────────────────────────────────────────────────────────────
-interface Guest {
-  nome: string
-  cognome: string
-  dietary: Dietary
-}
-
 const guests = ref<Guest[]>([{ nome: '', cognome: '', dietary: newDietary() }])
 
 function addGuest() {
@@ -60,12 +27,6 @@ function removeGuest(index: number) {
 }
 
 // ── Children ─────────────────────────────────────────────────────────────────
-interface Child {
-  name: string
-  age: string
-  dietary: Dietary
-}
-
 const children = ref<Child[]>([{ name: '', age: '', dietary: newDietary() }])
 
 function addChild() {
@@ -79,8 +40,8 @@ function removeChild(index: number) {
 }
 
 // ── Form state ───────────────────────────────────────────────────────────────
-const form = ref({
-  has_children: '' as 'si' | 'no' | '',
+const form = ref<RsvpForm>({
+  has_children: '',
   notes: '',
 })
 
@@ -89,10 +50,6 @@ const submitted = ref(false)
 const submitError = ref('')
 
 // ── Validation ───────────────────────────────────────────────────────────────
-function isDietaryFilled(d: Dietary): boolean {
-  return d.none || d.celiac || d.allergies || d.vegetarian || d.vegan
-}
-
 const errors = ref({
   guest0Nome: '',
   guest0Cognome: '',
@@ -157,34 +114,7 @@ async function handleSubmit() {
   submitting.value = true
   submitError.value = ''
 
-  const filledGuests = guests.value.filter(
-    (g, i) => i === 0 || g.nome.trim() !== '' || g.cognome.trim() !== '',
-  )
-  const guestNames = filledGuests
-    .map((g, i) => `${i + 1}. ${g.nome} ${g.cognome}`.trim())
-    .join('\n')
-
-  const adultAllergies = filledGuests
-    .map((g, i) => `Adulto ${i + 1}: ${serializeDietary(g.dietary)}`)
-    .join('; ')
-
-  const childAllergies = showChildren.value
-    ? children.value.map((c, i) => `Bambino ${i + 1}: ${serializeDietary(c.dietary)}`).join('; ')
-    : ''
-
-  const payload = new URLSearchParams({
-    'form-name': 'rsvp',
-    'bot-field': '',
-    party_size: String(filledGuests.length),
-    guest_names: guestNames,
-    has_children: form.value.has_children,
-    children_count: showChildren.value ? String(children.value.length) : '',
-    children_names: showChildren.value ? children.value.map((c) => c.name).join(', ') : '',
-    children_ages: showChildren.value ? children.value.map((c) => c.age).join(', ') : '',
-    adult_allergies: adultAllergies,
-    child_allergies: childAllergies,
-    notes: form.value.notes,
-  })
+  const payload = buildRsvpPayload(guests.value, children.value, form.value)
 
   try {
     const res = await fetch('/', {
