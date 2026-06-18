@@ -191,22 +191,22 @@ L'SFC importa da lì. I test unitari coprono i casi in `rsvp.test.ts` senza DOM.
 
 ## Riepilogo priorità
 
-| # | Priorità | Item |
-|---|----------|------|
-| 1 | 🔴 Alta | Deduplicare `.page-header` → `PageHeader.vue` o `base.css` |
-| 2 | 🔴 Alta | Focus visibile radio/checkbox RSVP |
-| 14 | 🔴 Alta | Validazione client-side mancante nel form RSVP |
-| 3 | 🟡 Media | Token duplicati `base.css` / `main.css` |
-| 4 | 🟡 Media | Rimuovere Tailwind o usarlo |
-| 5 | 🟡 Media | Mix `public/` vs `src/assets/` immagini |
-| 6 | 🟡 Media | `aria-label` hamburger dinamico |
-| 7 | 🟡 Media | `BaseButton.vue` componente riutilizzabile |
-| 15 | 🟡 Media | `:key="index"` → chiave stabile in `TransitionGroup` RSVP |
-| 16 | 🟡 Media | Estrarre logica RSVP in `src/utils/rsvp.ts` per testabilità |
-| 17 | 🟡 Media | Aggiungere test (Vitest) per il form RSVP |
-| 8 | 🟢 Bassa | `--nav-h` in `base.css` |
-| 9 | 🟢 Bassa | Rimuovere dead code (`icon` prop, `stores/counter.ts`) |
-| 10 | 🟢 Bassa | `HomeView` lazy-loaded |
-| 11 | 🟢 Bassa | `vueDevTools()` condizionato a dev |
-| 12 | 🟢 Bassa | Font `display=optional` |
-| 13 | 🟢 Bassa | Colori errore come token CSS |
+| # | Priorità | Item | Stato |
+|---|----------|------|-------|
+| 1 | 🔴 Alta | Deduplicare `.page-header` → `PageHeader.vue` | ✅ PR #50 |
+| 2 | 🔴 Alta | Focus visibile radio/checkbox RSVP | ✅ PR #50 |
+| 14 | 🔴 Alta | Validazione client-side mancante nel form RSVP | ✅ PR #50 |
+| 16 | 🟡 Media | Estrarre logica RSVP in `src/utils/rsvp.ts` per testabilità | ✅ PR #52 |
+| 17 | 🟡 Media | Aggiungere test (Vitest) per il form RSVP | ✅ PR #54 |
+| 3 | 🟡 Media | Token duplicati `base.css` / `main.css` | ⬜ aperto |
+| 4 | 🟡 Media | Rimuovere Tailwind o usarlo | ⬜ aperto |
+| 5 | 🟡 Media | Mix `public/` vs `src/assets/` immagini | ⬜ aperto |
+| 6 | 🟡 Media | `aria-label` hamburger dinamico | ⬜ aperto |
+| 7 | 🟡 Media | `BaseButton.vue` componente riutilizzabile | ⬜ aperto |
+| 15 | 🟡 Media | `:key="index"` → chiave stabile in `TransitionGroup` RSVP | ⬜ aperto |
+| 8 | 🟢 Bassa | `--nav-h` in `base.css` | ⬜ aperto |
+| 9 | 🟢 Bassa | Rimuovere dead code (`icon` prop, `stores/counter.ts`) | ⬜ aperto |
+| 10 | 🟢 Bassa | `HomeView` lazy-loaded | ⬜ aperto |
+| 11 | 🟢 Bassa | `vueDevTools()` condizionato a dev | ⬜ aperto |
+| 12 | 🟢 Bassa | Font `display=optional` | ⬜ aperto |
+| 13 | 🟢 Bassa | Colori errore come token CSS | ⬜ aperto |
