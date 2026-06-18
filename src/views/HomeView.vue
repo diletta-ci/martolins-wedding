@@ -70,7 +70,7 @@ onUnmounted(() => document.documentElement.classList.remove("page-home"));
   flex-direction: column;
   align-items: center;
   gap: 0;
-  padding: 0 0 3rem;
+  padding: 0 0 10rem;
   margin: 0;
   text-align: center;
   width: 100%;
