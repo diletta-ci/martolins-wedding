@@ -384,7 +384,7 @@ async function handleSubmit() {
                   </button>
                 </div>
                 <div class="field">
-                  <label class="field-label" :for="`child_name_${index}`">Nome</label>
+                  <label class="field-label" :for="`child_name_${index}`">Nome <span class="field-required" aria-hidden="true">*</span></label>
                   <input
                     :id="`child_name_${index}`"
                     v-model="child.name"
@@ -397,7 +397,7 @@ async function handleSubmit() {
                   <p v-if="errors.children[index]?.name" class="field-error" role="alert">{{ errors.children[index]?.name }}</p>
                 </div>
                 <div class="field">
-                  <label class="field-label" :for="`child_age_${index}`">Età</label>
+                  <label class="field-label" :for="`child_age_${index}`">Età <span class="field-required" aria-hidden="true">*</span></label>
                   <input
                     :id="`child_age_${index}`"
                     v-model="child.age"
