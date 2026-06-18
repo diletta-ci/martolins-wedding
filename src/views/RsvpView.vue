@@ -134,7 +134,7 @@ function validateForm(): boolean {
         errors.value.children[i]!.name = 'Il nome è obbligatorio'
         valid = false
       }
-      if (!child.age.trim()) {
+      if (child.age === '') {
         errors.value.children[i]!.age = "L'età è obbligatoria"
         valid = false
       }
