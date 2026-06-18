@@ -203,7 +203,7 @@ L'SFC importa da lì. I test unitari coprono i casi in `rsvp.test.ts` senza DOM.
 | 5 | 🟡 Media | Mix `public/` vs `src/assets/` immagini | ⬜ aperto |
 | 6 | 🟡 Media | `aria-label` hamburger dinamico | ⬜ aperto |
 | 7 | 🟡 Media | `BaseButton.vue` componente riutilizzabile | ⬜ aperto |
-| 15 | 🟡 Media | `:key="index"` → chiave stabile in `TransitionGroup` RSVP | ⬜ aperto |
+| 15 | 🟡 Media | `:key="index"` → chiave stabile in `TransitionGroup` RSVP | ✅ PR #55 |
 | 8 | 🟢 Bassa | `--nav-h` in `base.css` | ⬜ aperto |
 | 9 | 🟢 Bassa | Rimuovere dead code (`icon` prop, `stores/counter.ts`) | ⬜ aperto |
 | 10 | 🟢 Bassa | `HomeView` lazy-loaded | ⬜ aperto |
