@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import PageHeader from '@/components/PageHeader.vue'
 import valigieImg from "@/assets/images/valigie.png";
 
 const PAYPAL_URL = "https://paypal.me/MartaZoeC";
@@ -10,9 +11,7 @@ const BANK_BENEFICIARY = "Giacomo Andreoli & Marta Zoe Cagliero";
 
 <template>
   <!-- ─── Page header ──────────────────────────────────────────────────── -->
-  <section class="page-header" aria-label="Regalo">
-    <img src="/tit-regalo.png" alt="Regalo" class="page-title-img" />
-  </section>
+  <PageHeader src="/tit-regalo.png" alt="Regalo" aria-label="Regalo" />
 
   <!-- ─── Intro ────────────────────────────────────────────────────────── -->
   <section class="intro-section">
@@ -100,26 +99,6 @@ const BANK_BENEFICIARY = "Giacomo Andreoli & Marta Zoe Cagliero";
 </template>
 
 <style scoped>
-/* ── Page header ────────────────────────────────────────────────────────── */
-.page-header {
-  background-color: var(--wedding-brand);
-  background-image: radial-gradient(
-    ellipse 70% 80% at 50% 40%,
-    rgba(255, 255, 255, 0.09) 0%,
-    transparent 70%
-  );
-  padding: 3rem 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.page-title-img {
-  height: clamp(3rem, 12.5vw, 9.5rem);
-  width: auto;
-  max-width: 100%;
-}
-
 /* ── Intro ──────────────────────────────────────────────────────────────── */
 .intro-section {
   background-color: var(--wedding-surface);

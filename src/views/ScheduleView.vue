@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import PageHeader from '@/components/PageHeader.vue'
 import WeddingTimeline from "@/components/WeddingTimeline.vue";
 import type { TimelineEvent } from "@/components/WeddingTimeline.vue";
 import bouquetIcon from "@/assets/images/bouquet.png";
@@ -31,13 +32,7 @@ const events: TimelineEvent[] = [
 
 <template>
   <!-- ─── Page header ──────────────────────────────────────────────────── -->
-  <section class="page-header" aria-label="Programma della giornata">
-    <img
-      src="/tit-programma.png"
-      alt="Programma"
-      class="page-title-img"
-    />
-  </section>
+  <PageHeader src="/tit-programma.png" alt="Programma" aria-label="Programma della giornata" />
 
   <!-- ─── Timeline ──────────────────────────────────────────────────────── -->
   <section class="timeline-section">
@@ -48,26 +43,6 @@ const events: TimelineEvent[] = [
 </template>
 
 <style scoped>
-/* ── Page header ─────────────────────────────────────────────────────────── */
-.page-header {
-  background-color: var(--wedding-brand);
-  background-image: radial-gradient(
-    ellipse 70% 80% at 50% 40%,
-    rgba(255, 255, 255, 0.09) 0%,
-    transparent 70%
-  );
-  padding: 3rem 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.page-title-img {
-  height: clamp(3rem, 12.5vw, 9.5rem);
-  width: auto;
-  max-width: 100%;
-}
-
 /* ── Timeline section ────────────────────────────────────────────────────── */
 .timeline-section {
   background-color: var(--wedding-surface);

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import PageHeader from '@/components/PageHeader.vue'
 import { ref, computed } from 'vue'
 
 // ── Dietary helpers ───────────────────────────────────────────────────────────
@@ -87,11 +88,72 @@ const submitting = ref(false)
 const submitted = ref(false)
 const submitError = ref('')
 
+// ── Validation ───────────────────────────────────────────────────────────────
+function isDietaryFilled(d: Dietary): boolean {
+  return d.none || d.celiac || d.allergies || d.vegetarian || d.vegan
+}
+
+const errors = ref({
+  guest0Nome: '',
+  guest0Cognome: '',
+  guestDietary: [] as string[],
+  hasChildren: '',
+  children: [] as Array<{ name: string; age: string; dietary: string }>,
+})
+
+function validateForm(): boolean {
+  errors.value.guest0Nome = ''
+  errors.value.guest0Cognome = ''
+  errors.value.hasChildren = ''
+  errors.value.guestDietary = guests.value.map(() => '')
+  errors.value.children = children.value.map(() => ({ name: '', age: '', dietary: '' }))
+
+  let valid = true
+  const g0 = guests.value[0]
+  if (!g0?.nome.trim()) {
+    errors.value.guest0Nome = 'Il nome è obbligatorio'
+    valid = false
+  }
+  if (!g0?.cognome.trim()) {
+    errors.value.guest0Cognome = 'Il cognome è obbligatorio'
+    valid = false
+  }
+  guests.value.forEach((guest, i) => {
+    if (!isDietaryFilled(guest.dietary)) {
+      errors.value.guestDietary[i] = 'Seleziona almeno un\'opzione'
+      valid = false
+    }
+  })
+  if (form.value.has_children === '') {
+    errors.value.hasChildren = "Seleziona un'opzione"
+    valid = false
+  }
+  if (form.value.has_children === 'si') {
+    children.value.forEach((child, i) => {
+      if (!child.name.trim()) {
+        errors.value.children[i]!.name = 'Il nome è obbligatorio'
+        valid = false
+      }
+      if (!child.age.trim()) {
+        errors.value.children[i]!.age = "L'età è obbligatoria"
+        valid = false
+      }
+      if (!isDietaryFilled(child.dietary)) {
+        errors.value.children[i]!.dietary = "Seleziona almeno un'opzione"
+        valid = false
+      }
+    })
+  }
+  return valid
+}
+
 // ── Conditional visibility ───────────────────────────────────────────────────
 const showChildren = computed(() => form.value.has_children === 'si')
 
 // ── Submit ───────────────────────────────────────────────────────────────────
 async function handleSubmit() {
+  if (!validateForm()) return
+
   submitting.value = true
   submitError.value = ''
 
@@ -146,9 +208,7 @@ async function handleSubmit() {
 
 <template>
   <!-- ─── Page header ──────────────────────────────────────────────────── -->
-  <section class="page-header" aria-label="Conferma di presenza">
-    <img src="/tit-rsvp.png" alt="RSVP" class="page-title-img" />
-  </section>
+  <PageHeader src="/tit-rsvp.png" alt="RSVP" aria-label="Conferma di presenza" />
 
   <!-- ─── Success state ────────────────────────────────────────────────── -->
   <section v-if="submitted" class="rsvp-success">
@@ -208,9 +268,11 @@ async function handleSubmit() {
                   v-model="guest.nome"
                   type="text"
                   class="field-input"
+                  :class="{ 'field-input--error': index === 0 && errors.guest0Nome }"
                   placeholder="Maria"
                   :required="index === 0"
                 />
+                <p v-if="index === 0 && errors.guest0Nome" class="field-error" role="alert">{{ errors.guest0Nome }}</p>
               </div>
               <div class="field">
                 <label class="field-label" :for="`cognome_${index}`">
@@ -222,12 +284,14 @@ async function handleSubmit() {
                   v-model="guest.cognome"
                   type="text"
                   class="field-input"
+                  :class="{ 'field-input--error': index === 0 && errors.guest0Cognome }"
                   placeholder="Rossi"
                   :required="index === 0"
                 />
+                <p v-if="index === 0 && errors.guest0Cognome" class="field-error" role="alert">{{ errors.guest0Cognome }}</p>
               </div>
               <div class="field guest-fields__dietary">
-                <p class="field-label">Esigenze alimentari — Adulto {{ index + 1 }}</p>
+                <p class="field-label">Esigenze alimentari — Adulto {{ index + 1 }} <span class="field-required" aria-hidden="true">*</span></p>
                 <div class="checkbox-group">
                   <label class="checkbox-option checkbox-option--none">
                     <input type="checkbox" v-model="guest.dietary.none" @change="toggleDietaryNone(guest.dietary)" />
@@ -268,6 +332,7 @@ async function handleSubmit() {
                     <span class="checkbox-text">Dieta vegana</span>
                   </label>
                 </div>
+                <p v-if="errors.guestDietary[index]" class="field-error" role="alert">{{ errors.guestDietary[index] }}</p>
               </div>
             </div>
             <button
@@ -312,6 +377,7 @@ async function handleSubmit() {
               <span class="radio-text">No</span>
             </label>
           </div>
+          <p v-if="errors.hasChildren" class="field-error" role="alert">{{ errors.hasChildren }}</p>
         </div>
 
         <Transition name="slide-down">
@@ -335,31 +401,35 @@ async function handleSubmit() {
                   </button>
                 </div>
                 <div class="field">
-                  <label class="field-label" :for="`child_name_${index}`">Nome</label>
+                  <label class="field-label" :for="`child_name_${index}`">Nome <span class="field-required" aria-hidden="true">*</span></label>
                   <input
                     :id="`child_name_${index}`"
                     v-model="child.name"
                     type="text"
                     class="field-input"
+                    :class="{ 'field-input--error': errors.children[index]?.name }"
                     placeholder="Nome del bambino"
                     required
                   />
+                  <p v-if="errors.children[index]?.name" class="field-error" role="alert">{{ errors.children[index]?.name }}</p>
                 </div>
                 <div class="field">
-                  <label class="field-label" :for="`child_age_${index}`">Età</label>
+                  <label class="field-label" :for="`child_age_${index}`">Età <span class="field-required" aria-hidden="true">*</span></label>
                   <input
                     :id="`child_age_${index}`"
                     v-model="child.age"
                     type="number"
                     class="field-input field-input--age"
+                    :class="{ 'field-input--error': errors.children[index]?.age }"
                     min="0"
                     max="17"
                     placeholder="Anni"
                     required
                   />
+                  <p v-if="errors.children[index]?.age" class="field-error" role="alert">{{ errors.children[index]?.age }}</p>
                 </div>
                 <div class="field">
-                  <p class="field-label">Esigenze alimentari</p>
+                  <p class="field-label">Esigenze alimentari <span class="field-required" aria-hidden="true">*</span></p>
                   <div class="checkbox-group">
                     <label class="checkbox-option checkbox-option--none">
                       <input type="checkbox" v-model="child.dietary.none" @change="toggleDietaryNone(child.dietary)" />
@@ -400,6 +470,7 @@ async function handleSubmit() {
                       <span class="checkbox-text">Dieta vegana</span>
                     </label>
                   </div>
+                  <p v-if="errors.children[index]?.dietary" class="field-error" role="alert">{{ errors.children[index]?.dietary }}</p>
                 </div>
               </div>
             </TransitionGroup>
@@ -451,26 +522,6 @@ async function handleSubmit() {
 </template>
 
 <style scoped>
-/* ── Page header ─────────────────────────────────────────────────────────── */
-.page-header {
-  background-color: var(--wedding-brand);
-  background-image: radial-gradient(
-    ellipse 70% 80% at 50% 40%,
-    rgba(255, 255, 255, 0.09) 0%,
-    transparent 70%
-  );
-  padding: 3rem 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.page-title-img {
-  height: clamp(3rem, 12.5vw, 9.5rem);
-  width: auto;
-  max-width: 100%;
-}
-
 /* ── Deadline note ───────────────────────────────────────────────────────── */
 .rsvp-deadline {
   font-family: var(--font-body);
@@ -651,6 +702,21 @@ async function handleSubmit() {
   box-shadow: 0 0 0 3px rgba(141, 166, 212, 0.2);
 }
 
+.field-input--error {
+  border-color: #c0392b;
+}
+
+.field-input--error:focus {
+  box-shadow: 0 0 0 3px rgba(192, 57, 43, 0.15);
+}
+
+.field-error {
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  color: #c0392b;
+  margin-top: 0.125rem;
+}
+
 .field-textarea {
   resize: vertical;
   min-height: 7rem;
@@ -728,7 +794,15 @@ async function handleSubmit() {
 }
 
 .radio-option input[type='radio'] {
-  display: none;
+  opacity: 0;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+}
+
+.radio-option input[type='radio']:focus-visible + .radio-mark {
+  outline: 2px solid var(--wedding-brand);
+  outline-offset: 2px;
 }
 
 .radio-mark {
@@ -781,7 +855,15 @@ async function handleSubmit() {
 }
 
 .checkbox-option input[type='checkbox'] {
-  display: none;
+  opacity: 0;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+}
+
+.checkbox-option input[type='checkbox']:focus-visible + .checkbox-mark {
+  outline: 2px solid var(--wedding-brand);
+  outline-offset: 2px;
 }
 
 .checkbox-mark {
