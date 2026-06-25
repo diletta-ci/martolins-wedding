@@ -44,7 +44,7 @@ function closeMenu() {
       <button
         class="nav-hamburger"
         :aria-expanded="menuOpen"
-        aria-label="Apri menu"
+        :aria-label="menuOpen ? 'Chiudi menu' : 'Apri menu'"
         @click="menuOpen = !menuOpen"
       >
         <span class="hamburger-bar" :class="{ open: menuOpen }" />
