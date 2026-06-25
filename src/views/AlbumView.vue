@@ -13,7 +13,7 @@ import PageHeader from '@/components/PageHeader.vue'
         Qui trovi un modo semplice per condividere con noi tutte le foto e i video che hai fatto
         durante l'evento. Puoi aprire l'album
         <a href="https://drive.google.com/drive/folders/1xBdXuXFddrbAgJ3cLotUmSw14D0wCXz7" target="_blank" rel="noopener noreferrer" class="intro-link">direttamente da qui</a>
-        oppure usando il pulsante qui sotto — carica i tuoi scatti e sarà il nostro modo di rivivere questa giornata insieme.
+        oppure usando il pulsante qui sotto. Carica i tuoi scatti e sarà il nostro modo di rivivere questa giornata insieme.
       </p>
     </div>
   </section>
