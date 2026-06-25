@@ -1,22 +1,3 @@
-@import "tailwindcss";
-
-/* ─── Tailwind theme extension ───────────────────────────────────────────── */
-@theme {
-  /* Colors — mirrors tokens in base.css for Tailwind utility access */
-  --color-brand:       #8DA6D4;
-  --color-brand-dark:  #6B7FAF;
-  --color-brand-light: #C4D0E8;
-  --color-brand-pale:  #EEF1F8;
-  --color-surface:     #FAFAF8;
-  --color-surface-alt: #F3F1ED;
-  --color-ink:         #1C1B18;
-
-  /* Fonts */
-  --font-display: "Raleway", sans-serif;
-  --font-heading: "Raleway", sans-serif;
-  --font-body:    "Roboto", system-ui, sans-serif;
-}
-
 @import "./base.css";
 
 /* ─── App shell ──────────────────────────────────────────────────────────── */
