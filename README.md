@@ -10,7 +10,6 @@ Currenlty in development and available under the free domain [martolinswedding.n
 - [Vue Router](https://router.vuejs.org/) (routing)
 - [Vite](https://vitejs.dev/) (build tool & development server)
 - [TypeScript](https://www.typescriptlang.org/) (static typing)
-- [Tailwind CSS](https://tailwindcss.com/) (utility-first CSS framework)
 - [ESLint](https://eslint.org/) (linting)
 - [Prettier](https://prettier.io/) (code formatting)
 - [vite-plugin-vue-devtools](https://github.com/webfansplz/vite-plugin-vue-devtools) (Vue dev tools)
