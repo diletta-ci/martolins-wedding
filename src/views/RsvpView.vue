@@ -13,11 +13,16 @@ import {
   buildRsvpPayload,
 } from '@/utils/rsvp'
 
+type GuestRow = Guest & { id: number }
+type ChildRow = Child & { id: number }
+
+let nextId = 0
+
 // ── Guest list ───────────────────────────────────────────────────────────────
-const guests = ref<Guest[]>([{ nome: '', cognome: '', dietary: newDietary() }])
+const guests = ref<GuestRow[]>([{ id: nextId++, nome: '', cognome: '', dietary: newDietary() }])
 
 function addGuest() {
-  guests.value.push({ nome: '', cognome: '', dietary: newDietary() })
+  guests.value.push({ id: nextId++, nome: '', cognome: '', dietary: newDietary() })
 }
 
 function removeGuest(index: number) {
@@ -27,10 +32,10 @@ function removeGuest(index: number) {
 }
 
 // ── Children ─────────────────────────────────────────────────────────────────
-const children = ref<Child[]>([{ name: '', age: '', dietary: newDietary() }])
+const children = ref<ChildRow[]>([{ id: nextId++, name: '', age: '', dietary: newDietary() }])
 
 function addChild() {
-  children.value.push({ name: '', age: '', dietary: newDietary() })
+  children.value.push({ id: nextId++, name: '', age: '', dietary: newDietary() })
 }
 
 function removeChild(index: number) {
@@ -184,7 +189,7 @@ async function handleSubmit() {
         <TransitionGroup name="guest-row" tag="div" class="guest-list">
           <div
             v-for="(guest, index) in guests"
-            :key="index"
+            :key="guest.id"
             class="guest-row"
           >
             <div class="guest-fields">
@@ -315,7 +320,7 @@ async function handleSubmit() {
             <TransitionGroup name="guest-row" tag="div" class="child-list">
               <div
                 v-for="(child, index) in children"
-                :key="index"
+                :key="child.id"
                 class="child-entry"
               >
                 <div class="child-entry-header">
