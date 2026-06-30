@@ -1,11 +1,14 @@
 <script setup lang="ts">
 import PageHeader from '@/components/PageHeader.vue'
 import BaseButton from '@/components/BaseButton.vue'
+import titFotoImg from '@/assets/images/tit-foto.png'
+import mgFototess1Img from '@/assets/images/mg-fototess1.png'
+import mgFototess2Img from '@/assets/images/mg-fototess2.png'
 </script>
 
 <template>
   <!-- ─── Page header ──────────────────────────────────────────────────── -->
-  <PageHeader src="/tit-foto.png" alt="Foto" aria-label="Album fotografico" />
+  <PageHeader :src="titFotoImg" alt="Foto" aria-label="Album fotografico" />
 
   <!-- ─── Intro ────────────────────────────────────────────────────────── -->
   <section class="intro-section">
@@ -29,7 +32,7 @@ import BaseButton from '@/components/BaseButton.vue'
           <div class="tape"></div>
           <img
             class="strip-img"
-            src="/mg-fototess1.png"
+            :src="mgFototess1Img"
             alt="Striscia fotografica di Marta e Giacomo"
           >
         </div>
@@ -37,7 +40,7 @@ import BaseButton from '@/components/BaseButton.vue'
           <div class="tape"></div>
           <img
             class="strip-img"
-            src="/mg-fototess2.png"
+            :src="mgFototess2Img"
             alt="Striscia fotografica di Marta e Giacomo"
           >
         </div>

@@ -1,11 +1,13 @@
 <script setup lang="ts">
 import PageHeader from '@/components/PageHeader.vue'
 import BaseButton from '@/components/BaseButton.vue'
+import titLocationImg from '@/assets/images/tit-location.png'
+import mappaGanciImg from '@/assets/images/mappa-ganci.png'
 </script>
 
 <template>
   <!-- ─── Page header ──────────────────────────────────────────────────── -->
-  <PageHeader src="/tit-location.png" alt="Location" aria-label="Location del matrimonio" />
+  <PageHeader :src="titLocationImg" alt="Location" aria-label="Location del matrimonio" />
 
   <!-- ─── Il posto è grande: illustrated map ───────────────────────────── -->
   <section class="map-section" aria-label="Mappa della location">
@@ -23,7 +25,7 @@ import BaseButton from '@/components/BaseButton.vue'
         Sconsigliamo i tacchi a spillo, la cerimonia si svolge sul prato.
       </p>
       <img
-        src="/mappa-ganci.png"
+        :src="mappaGanciImg"
         alt="Mappa illustrata di Ganci Farm con cerimonia, ricevimento e parcheggio"
         class="map-illustrated"
       />
