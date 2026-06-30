@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import PageHeader from '@/components/PageHeader.vue'
+import BaseButton from '@/components/BaseButton.vue'
 </script>
 
 <template>
@@ -50,14 +51,14 @@ import PageHeader from '@/components/PageHeader.vue'
             17015 Celle Ligure SV
           </p>
           <p class="location-note">È disponibile il parcheggio della location.</p>
-          <a
-            class="location-btn"
+          <BaseButton
+            class="location-cta"
             href="https://maps.app.goo.gl/mQHFNGmcrX75JFb88"
             target="_blank"
             rel="noopener noreferrer"
           >
             Indicazioni
-          </a>
+          </BaseButton>
         </div>
       </article>
     </div>
@@ -205,23 +206,7 @@ import PageHeader from '@/components/PageHeader.vue'
   margin-top: 0.25rem;
 }
 
-.location-btn {
+.location-cta {
   margin-top: 1.1rem;
-  display: inline-flex;
-  align-items: center;
-  padding: 0.65rem 1.5rem;
-  background-color: var(--wedding-brand);
-  color: var(--wedding-white);
-  font-family: var(--font-heading);
-  font-size: 0.8125rem;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  border-radius: 0.375rem;
-  transition: background-color 0.2s ease;
-}
-
-.location-btn:hover {
-  background-color: var(--wedding-brand-dark);
 }
 </style>

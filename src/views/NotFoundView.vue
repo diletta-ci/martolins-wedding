@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { RouterLink } from "vue-router";
+import BaseButton from '@/components/BaseButton.vue'
 import bouquetIcon from "@/assets/images/bouquet.png";
 import pranzoIcon from "@/assets/images/pranzo.png";
 </script>
@@ -15,14 +15,14 @@ import pranzoIcon from "@/assets/images/pranzo.png";
       </p>
 
       <div class="not-found-actions">
-        <RouterLink to="/" class="not-found-btn">
+        <BaseButton variant="ghost" to="/">
           <img :src="bouquetIcon" alt="" class="btn-icon" />
           Torna alla festa
-        </RouterLink>
-        <RouterLink to="/rsvp" class="not-found-btn">
+        </BaseButton>
+        <BaseButton variant="ghost" to="/rsvp">
           <img :src="pranzoIcon" alt="" class="btn-icon" />
           Conferma la tua presenza
-        </RouterLink>
+        </BaseButton>
       </div>
     </div>
   </section>
@@ -76,25 +76,6 @@ import pranzoIcon from "@/assets/images/pranzo.png";
   width: 100%;
 }
 
-.not-found-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6rem;
-  padding: 0.7rem 1.5rem;
-  background-color: var(--wedding-white);
-  color: var(--wedding-brand-dark);
-  font-family: var(--font-heading);
-  font-size: 0.8125rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  border-radius: 0.375rem;
-  transition: background-color 0.2s ease, color 0.2s ease;
-}
-
-.not-found-btn:hover {
-  background-color: var(--wedding-brand-pale);
-}
 
 .btn-icon {
   width: 1.75rem;
