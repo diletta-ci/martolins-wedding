@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import PageHeader from '@/components/PageHeader.vue'
+import titRsvpImg from '@/assets/images/tit-rsvp.png'
 import { ref, computed } from 'vue'
 import {
   type Dietary,
@@ -143,7 +144,7 @@ async function handleSubmit() {
 
 <template>
   <!-- ─── Page header ──────────────────────────────────────────────────── -->
-  <PageHeader src="/tit-rsvp.png" alt="RSVP" aria-label="Conferma di presenza" />
+  <PageHeader :src="titRsvpImg" alt="RSVP" aria-label="Conferma di presenza" />
 
   <!-- ─── Success state ────────────────────────────────────────────────── -->
   <section v-if="submitted" class="rsvp-success">

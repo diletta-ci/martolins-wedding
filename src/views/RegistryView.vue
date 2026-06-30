@@ -2,6 +2,7 @@
 import PageHeader from '@/components/PageHeader.vue'
 import BaseButton from '@/components/BaseButton.vue'
 import valigieImg from "@/assets/images/valigie.png";
+import titRegaloImg from '@/assets/images/tit-regalo.png'
 
 const PAYPAL_URL = "https://paypal.me/MartaZoeC";
 
@@ -12,7 +13,7 @@ const BANK_BENEFICIARY = "Giacomo Andreoli & Marta Zoe Cagliero";
 
 <template>
   <!-- ─── Page header ──────────────────────────────────────────────────── -->
-  <PageHeader src="/tit-regalo.png" alt="Regalo" aria-label="Regalo" />
+  <PageHeader :src="titRegaloImg" alt="Regalo" aria-label="Regalo" />
 
   <!-- ─── Intro ────────────────────────────────────────────────────────── -->
   <section class="intro-section">
