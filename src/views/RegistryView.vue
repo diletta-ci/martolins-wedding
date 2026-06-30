@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import PageHeader from '@/components/PageHeader.vue'
+import BaseButton from '@/components/BaseButton.vue'
 import valigieImg from "@/assets/images/valigie.png";
 
 const PAYPAL_URL = "https://paypal.me/MartaZoeC";
@@ -82,15 +83,14 @@ const BANK_BENEFICIARY = "Giacomo Andreoli & Marta Zoe Cagliero";
               In alternativa al bonifico potete usare Paypal attraverso il link qui sotto
             </p>
           </div>
-          <a
+          <BaseButton
             :href="PAYPAL_URL"
             target="_blank"
             rel="noopener noreferrer"
-            class="gift-btn gift-btn--solid"
             aria-label="Invia un contributo via PayPal"
           >
             Invia via PayPal
-          </a>
+          </BaseButton>
         </div>
 
       </div>
@@ -261,32 +261,5 @@ const BANK_BENEFICIARY = "Giacomo Andreoli & Marta Zoe Cagliero";
   word-break: break-all;
 }
 
-/* ── Gift buttons ───────────────────────────────────────────────────────── */
-.gift-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.4rem;
-  padding: 0.7rem 1.5rem;
-  font-family: var(--font-heading);
-  font-size: 0.875rem;
-  font-weight: 500;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  border-radius: 0.375rem;
-  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
-  white-space: nowrap;
-  align-self: flex-start;
-}
-
-.gift-btn--solid {
-  background-color: var(--wedding-brand);
-  color: var(--wedding-white);
-  border: 1.5px solid transparent;
-}
-
-.gift-btn--solid:hover {
-  background-color: var(--wedding-brand-dark);
-}
 
 </style>
