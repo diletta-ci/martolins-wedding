@@ -188,9 +188,15 @@ function closeMenu() {
 
 /* ── Mobile drawer ──────────────────────────────────────────────────────── */
 .nav-drawer {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
   display: flex;
   flex-direction: column;
+  background-color: var(--wedding-white);
   border-top: 1px solid var(--wedding-border);
+  box-shadow: 0 12px 24px rgba(28, 27, 24, 0.08);
   padding: 0.75rem 0;
 }
 
