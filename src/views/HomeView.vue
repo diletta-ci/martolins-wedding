@@ -40,11 +40,6 @@ onUnmounted(() => document.documentElement.classList.remove("page-home"));
 </template>
 
 <style scoped>
-/* ── Nav height token (must match AppNav .nav-inner height: 3.75rem) ──── */
-:root {
-  --nav-h: 3.75rem;
-}
-
 /* ── Hero ──────────────────────────────────────────────────────────────── */
 .hero {
   position: relative;

@@ -90,7 +90,7 @@ function closeMenu() {
   max-width: var(--content-wide);
   margin: 0 auto;
   padding: 0 1.5rem;
-  height: 3.75rem;
+  height: var(--nav-h);
 }
 
 /* ── Wordmark ───────────────────────────────────────────────────────────── */
