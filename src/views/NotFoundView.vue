@@ -21,7 +21,7 @@ import pranzoIcon from "@/assets/images/pranzo.png";
         </BaseButton>
         <BaseButton variant="ghost" to="/rsvp">
           <img :src="pranzoIcon" alt="" class="btn-icon" />
-          Conferma la tua presenza
+          Vai al RSVP
         </BaseButton>
       </div>
     </div>
