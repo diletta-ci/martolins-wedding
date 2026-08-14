@@ -27,6 +27,9 @@
   --section-gap:  6rem;
   --content-max:  780px;
   --content-wide: 1100px;
+
+  /* Layout */
+  --nav-h: 3.75rem;
 }
 
 /* ─── Reset ──────────────────────────────────────────────────────────────── */

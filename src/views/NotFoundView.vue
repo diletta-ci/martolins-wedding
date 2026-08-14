@@ -30,7 +30,7 @@ import pranzoIcon from "@/assets/images/pranzo.png";
 
 <style scoped>
 .not-found {
-  min-height: calc(100vh - 3.75rem);
+  min-height: calc(100vh - var(--nav-h));
   background-color: var(--wedding-brand);
   background-image: radial-gradient(
     ellipse 70% 60% at 50% 45%,
