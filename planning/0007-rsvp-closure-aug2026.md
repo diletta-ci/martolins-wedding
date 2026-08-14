@@ -32,7 +32,7 @@ Copy indicativa (da rifinire in tono con `shared:playtomic-ux-content-design` o 
 - Rimuovere o commentare la route/logica Netlify Forms se non serve più raccogliere submission (valutare se lasciare il form nascosto nel markup per Netlify build-bot detection, se necessario — verificare se Netlify richiede il form statico presente in build per continuare a funzionare in futuro, altrimenti si può rimuovere del tutto).
 - Aggiornare eventuali link/nav che promettono "Rispondi al RSVP" per riflettere la chiusura.
 
-**Nota:** i punti 14, 15, 16, 17 (validazione, chiavi stabili, estrazione logica, test) relativi al form RSVP diventano **irrilevanti** una volta rimosso il form — non serve più lavorarci.
+**Nota:** i punti 14, 15, 16, 17 (validazione, chiavi stabili, estrazione logica, test) relativi al form RSVP diventano **irrilevanti** una volta rimosso il form — non serve più lavorarci. `src/utils/rsvp.ts` e `src/utils/rsvp.test.ts` restano nel repo (non importati da nessuna view) in caso servano per riattivare il form in futuro.
 
 ---
 
@@ -149,7 +149,7 @@ Sezione mantenuta per storico. Con l'item #18, il form viene rimosso e questi pu
 ✅ Completato — PR #50 — **superato da item #18**
 
 ### 16. Logica pura non testabile senza montare il componente
-✅ Completato — PR #52 — **superato da item #18** (la logica estratta va rimossa insieme al form)
+✅ Completato — PR #52 — **superato da item #18** (logica non più in uso, ma il file resta nel repo per un eventuale futuro riutilizzo)
 
 ### 17. Nessun test sul form RSVP
 ✅ Completato — PR #54 — **superato da item #18** (i test del form andranno rimossi/aggiornati)
