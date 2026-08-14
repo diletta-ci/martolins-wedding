@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import PageHeader from '@/components/PageHeader.vue'
 import WeddingTimeline from "@/components/WeddingTimeline.vue";
+import titProgrammaImg from '@/assets/images/tit-programma.png'
 import type { TimelineEvent } from "@/components/WeddingTimeline.vue";
 import bouquetIcon from "@/assets/images/bouquet.png";
 import pranzoIcon from "@/assets/images/pranzo.png";
@@ -32,7 +33,7 @@ const events: TimelineEvent[] = [
 
 <template>
   <!-- ─── Page header ──────────────────────────────────────────────────── -->
-  <PageHeader src="/tit-programma.png" alt="Programma" aria-label="Programma della giornata" />
+  <PageHeader :src="titProgrammaImg" alt="Programma" aria-label="Programma della giornata" />
 
   <!-- ─── Timeline ──────────────────────────────────────────────────────── -->
   <section class="timeline-section">

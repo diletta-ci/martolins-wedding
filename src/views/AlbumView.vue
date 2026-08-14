@@ -1,10 +1,14 @@
 <script setup lang="ts">
 import PageHeader from '@/components/PageHeader.vue'
+import BaseButton from '@/components/BaseButton.vue'
+import titFotoImg from '@/assets/images/tit-foto.png'
+import mgFototess1Img from '@/assets/images/mg-fototess1.png'
+import mgFototess2Img from '@/assets/images/mg-fototess2.png'
 </script>
 
 <template>
   <!-- ─── Page header ──────────────────────────────────────────────────── -->
-  <PageHeader src="/tit-foto.png" alt="Foto" aria-label="Album fotografico" />
+  <PageHeader :src="titFotoImg" alt="Foto" aria-label="Album fotografico" />
 
   <!-- ─── Intro ────────────────────────────────────────────────────────── -->
   <section class="intro-section">
@@ -28,7 +32,7 @@ import PageHeader from '@/components/PageHeader.vue'
           <div class="tape"></div>
           <img
             class="strip-img"
-            src="/mg-fototess1.png"
+            :src="mgFototess1Img"
             alt="Striscia fotografica di Marta e Giacomo"
           >
         </div>
@@ -36,7 +40,7 @@ import PageHeader from '@/components/PageHeader.vue'
           <div class="tape"></div>
           <img
             class="strip-img"
-            src="/mg-fototess2.png"
+            :src="mgFototess2Img"
             alt="Striscia fotografica di Marta e Giacomo"
           >
         </div>
@@ -57,11 +61,11 @@ import PageHeader from '@/components/PageHeader.vue'
           Le foto sono su <strong>Google Drive</strong>. Puoi sfogliare l'album e caricare
           i tuoi scatti direttamente dal browser, senza installare nulla.
         </p>
-        <a
+        <BaseButton
+          class="album-cta"
           href="https://drive.google.com/drive/folders/1xBdXuXFddrbAgJ3cLotUmSw14D0wCXz7"
           target="_blank"
           rel="noopener noreferrer"
-          class="cta-btn"
           aria-label="Apri l'album su Google Drive"
         >
           <svg class="btn-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -74,7 +78,7 @@ import PageHeader from '@/components/PageHeader.vue'
             />
           </svg>
           Apri l'album
-        </a>
+        </BaseButton>
       </div>
 
     </div>
@@ -223,26 +227,8 @@ import PageHeader from '@/components/PageHeader.vue'
   font-weight: 600;
 }
 
-.cta-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
+.album-cta {
   margin-top: 0.5rem;
-  padding: 0.8rem 2rem;
-  font-family: var(--font-heading);
-  font-size: 0.9375rem;
-  font-weight: 500;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  background-color: var(--wedding-brand);
-  color: var(--wedding-white);
-  border-radius: 0.375rem;
-  transition: background-color 0.2s ease;
-}
-
-.cta-btn:hover {
-  background-color: var(--wedding-brand-dark);
 }
 
 .btn-icon {

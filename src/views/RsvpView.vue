@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import PageHeader from '@/components/PageHeader.vue'
+import titRsvpImg from '@/assets/images/tit-rsvp.png'
 </script>
 
 <template>
   <!-- ─── Page header ──────────────────────────────────────────────────── -->
-  <PageHeader src="/tit-rsvp.png" alt="RSVP" aria-label="Conferma di presenza" />
+  <PageHeader :src="titRsvpImg" alt="RSVP" aria-label="Conferma di presenza" />
 
   <!-- ─── Closure message ──────────────────────────────────────────────── -->
   <section class="rsvp-closed">
