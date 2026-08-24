@@ -1,10 +1,7 @@
 <script setup lang="ts">
 import PageHeader from '@/components/PageHeader.vue'
-import BaseButton from '@/components/BaseButton.vue'
 import valigieImg from "@/assets/images/valigie.png";
 import titRegaloImg from '@/assets/images/tit-regalo.png'
-
-const PAYPAL_URL = "https://paypal.me/MartaZoeC";
 
 const IBAN = "IT26 R036 6901 6008 9464 0322 584";
 const BIC = "REVOITM2";
@@ -65,33 +62,6 @@ const BANK_BENEFICIARY = "Giacomo Andreoli & Marta Zoe Cagliero";
               </div>
             </div>
           </div>
-        </div>
-
-        <!-- PayPal -->
-        <div class="gift-card gift-card--primary">
-          <div class="gift-card-icon" aria-hidden="true">
-            <!-- PayPal-style wallet icon -->
-            <svg viewBox="0 0 24 24" fill="none">
-              <path
-                d="M20 4H4C2.9 4 2 4.9 2 6v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V10h16v8zm0-10H4V6h16v2z"
-                fill="currentColor"
-              />
-            </svg>
-          </div>
-          <div class="gift-card-body">
-            <h3 class="gift-card-title">Contributo PayPal</h3>
-            <p class="gift-card-desc">
-              In alternativa al bonifico potete usare Paypal attraverso il link qui sotto
-            </p>
-          </div>
-          <BaseButton
-            :href="PAYPAL_URL"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Invia un contributo via PayPal"
-          >
-            Invia via PayPal
-          </BaseButton>
         </div>
 
       </div>
